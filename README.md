@@ -3,21 +3,22 @@ Droopy
 
 Web Api clone for MVC
 
+
 // ApiController inherits from Controller, but overrides certain things mainly the ControllerDispatcher.
 public ProductsController: ApiController
 {
-  var db ... // Some EF boilerplate code.
-
+  	var db ... // Some EF boilerplate code.
+	
 	public IQueryable<Product> Get()
 	{
 		return dbContext.Products; 
 	}
-
+	
 	public Product Get(int id)
 	{
 		return dbProducts.Where(p => p.Id == id).Single();	
 	}
-
+	
 	[HttpPost] / * Optional since naming convention assumes post */
 	public Product Post(Product product)
 	{
@@ -25,15 +26,15 @@ public ProductsController: ApiController
 		db.SaveChanges();
 		return product; // Echo object with populated Id.
 	}
-
+	
 	[HttpPut] / * Optional */
 	public Product Put(Product product)
 	{
-                db.Products.Attach(product);
-                db.ObjectStateManager.ChangeObjectState(product, EntityState.Modified);
-                db.SaveChanges();
+	        db.Products.Attach(product);
+	        db.ObjectStateManager.ChangeObjectState(product, EntityState.Modified);
+	        db.SaveChanges();
 	}
-
+	
 	[HttpDelete / * Optional */
 	public int  Delete(int id) { // etc }
 }
