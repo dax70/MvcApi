@@ -11,10 +11,12 @@ Web Api clone for MVC
         {
             return dbContext.Products; 
         }
+        
         public Product Get(int id)
         {
             return dbProducts.Where(p => p.Id == id).Single();	
         }
+        
         [HttpPost] / * Optional since naming convention assumes post */
         public Product Post(Product product)
         {
@@ -22,6 +24,7 @@ Web Api clone for MVC
             db.SaveChanges();
             return product; // Echo object with populated Id.
         }
+        
         [HttpPut] / * Optional */
         public Product Put(Product product)
         {
@@ -29,6 +32,7 @@ Web Api clone for MVC
             db.ObjectStateManager.ChangeObjectState(product, EntityState.Modified);
             db.SaveChanges();
         }
+        
         [HttpDelete / * Optional */
         public int  Delete(int id) { // etc }
     }
