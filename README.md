@@ -3,41 +3,35 @@ Droopy
 
 Web Api clone for MVC
 
-
-// ApiController inherits from Controller, but overrides certain things mainly the ControllerDispatcher.
-public ProductsController: ApiController
-{
-  	var db ... // Some EF boilerplate code.
-	
-	public IQueryable<Product> Get()
-	{
-		return dbContext.Products; 
-	}
-	
-	public Product Get(int id)
-	{
-		return dbProducts.Where(p => p.Id == id).Single();	
-	}
-	
-	[HttpPost] / * Optional since naming convention assumes post */
-	public Product Post(Product product)
-	{
-		db.Products.AddObject(product);	
-		db.SaveChanges();
-		return product; // Echo object with populated Id.
-	}
-	
-	[HttpPut] / * Optional */
-	public Product Put(Product product)
-	{
-	        db.Products.Attach(product);
-	        db.ObjectStateManager.ChangeObjectState(product, EntityState.Modified);
-	        db.SaveChanges();
-	}
-	
-	[HttpDelete / * Optional */
-	public int  Delete(int id) { // etc }
-}
+    // ApiController inherits from Controller, but overrides certain things mainly the ControllerDispatcher.
+    public ProductsController: ApiController
+    {
+        var db ... // Some EF boilerplate code.
+        public IQueryable<Product> Get()
+        {
+            return dbContext.Products; 
+        }
+        public Product Get(int id)
+        {
+            return dbProducts.Where(p => p.Id == id).Single();	
+        }
+        [HttpPost] / * Optional since naming convention assumes post */
+        public Product Post(Product product)
+        {
+            db.Products.AddObject(product);	
+            db.SaveChanges();
+            return product; // Echo object with populated Id.
+        }
+        [HttpPut] / * Optional */
+        public Product Put(Product product)
+        {
+            db.Products.Attach(product);
+            db.ObjectStateManager.ChangeObjectState(product, EntityState.Modified);
+            db.SaveChanges();
+        }
+        [HttpDelete / * Optional */
+        public int  Delete(int id) { // etc }
+    }
 
 The views are matched based on naming just like any MVC controller, in fact it's all MVC under the covers just extending the core framework at existing extensibility points so that it aligns almost 100% with Web API functionality, but reuses existing investments/code that is already on MVC.
 
