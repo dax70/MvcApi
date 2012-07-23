@@ -14,14 +14,20 @@ Rewritting these or migrating them to the similar Web API is not feasible for ma
 Additionally, Web API has the concept of MediaTypeFormatters, but does not have a proper HTML one. 
 If you need Razor views that work with models, without making everything go thru an ajax call to render UI then MVC API might be for you.
 
-## Features
-Liberate yourself to return **Objects** instead of *ActionResult* thru the magic of content negotiation. Take a look at the example below or the samples folder.
-If however your use needs to explicitly return an ActionResult, your free to do so, still works.
+Features
+--------
+### Content Negotiation
+Liberate yourself to return *Objects* instead of **ActionResult** thru the magic of content negotiation. Take a look at the example below or the samples folder.
+If however your use needs to explicitly return an ActionResult, your free to do so, still works. The current Content Negotiation supports: Html, Json and Xml.
 
-The current Content Negotiation supports: Html, Json and Xml.
+### Queries
+If you happen to return an **IQueryable**, the client can further filter it using ![OData](http://www.odata.org/) filters. This is based on the Web API filters that were pulled out of the RC.
 
-If you happen to return an IQueryable, the client can further filter it using OData filters. This is based on the Web API filters that were pulled out of the RC.
-
+### Actions
+By default Actions get mapped to the HttpVerb, which frees yourself from always specifying actions in routes.
+Ex: 
+* /customers will resolve to the IQueryable 
+* /customers/1 will resolve to the Single.
 
     // ApiController inherits from Controller, but overrides certain things mainly the ControllerDispatcher.
     public ProductsController: ApiController
