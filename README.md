@@ -1,14 +1,28 @@
 MVC API
-======
+=======
 
 MVC API is a Web Api framework built on top ASP.NET MVC.
+--------------------------------------------------------
 
 It is nearly identical to ASP.NET Web API, infact it strives to be so. 
 
+## Why another API framework for ASP.NET?
+-----------------------------------------
+
 The major difference is that existing projects have Controllers, Views, ActionFilters and other dependencies on MVC. 
 Rewritting these or migrating them to the similar Web API is not feasible for many projects.
+
 Additionally, Web API has the concept of MediaTypeFormatters, but does not have a proper HTML one. 
 If you need Razor views that work with models, without making everything go thru an ajax call to render UI then MVC API might be for you.
+
+## Features
+Liberate yourself to return **Objects** instead of *ActionResult* thru the magic of content negotiation. Take a look at the example below or the samples folder.
+If however your use needs to explicitly return an ActionResult, your free to do so, still works.
+
+The current Content Negotiation supports: Html, Json and Xml.
+
+If you happen to return an IQueryable, the client can further filter it using OData filters. This is based on the Web API filters that were pulled out of the RC.
+
 
     // ApiController inherits from Controller, but overrides certain things mainly the ControllerDispatcher.
     public ProductsController: ApiController
