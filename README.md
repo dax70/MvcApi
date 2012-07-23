@@ -1,7 +1,14 @@
-Droopy
+MVC API
 ======
 
-Web Api clone for MVC
+MVC API is a Web Api framework built on top ASP.NET MVC.
+
+It is nearly identical to ASP.NET Web API, infact it strives to be so. 
+
+The major difference is that existing projects have Controllers, Views, ActionFilters and other dependencies on MVC. 
+Rewritting these or migrating them to the similar Web API is not feasible for many projects.
+Additionally, Web API has the concept of MediaTypeFormatters, but does not have a proper HTML one. 
+If you need Razor views that work with models, without making everything go thru an ajax call to render UI then MVC API might be for you.
 
     // ApiController inherits from Controller, but overrides certain things mainly the ControllerDispatcher.
     public ProductsController: ApiController
