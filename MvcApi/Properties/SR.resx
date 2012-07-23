@@ -1,0 +1,853 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AmbiguousConstructorInvocation" xml:space="preserve">
+    <value>Ambiguous invocation of '{0}' constructor</value>
+  </data>
+  <data name="AmbiguousIndexerInvocation" xml:space="preserve">
+    <value>Ambiguous invocation of indexer in type '{0}'</value>
+  </data>
+  <data name="AmbiguousMethodInvocation" xml:space="preserve">
+    <value>Ambiguous invocation of method '{0}' in type '{1}'</value>
+  </data>
+  <data name="ApplyClientBehaviorNotSupportedByBehavior" xml:space="preserve">
+    <value>'{0}' does not support ApplyClientBehavior.</value>
+  </data>
+  <data name="AtLeastOneMediaTypeMappingAttributeRequired" xml:space="preserve">
+    <value>At least one of the following '{0}' attributes must be specified: '{1}', '{2}' or '{3}'.</value>
+  </data>
+  <data name="AttributeRequiredOnConfigElement" xml:space="preserve">
+    <value>A value must be specified for the '{0}' on the '{1}' element.</value>
+  </data>
+  <data name="AttributeRequiredOnConfigElementIfOtherAttributeSpecified" xml:space="preserve">
+    <value>If a value is specified for the '{0}'  on the '{1}' element, then a value must also be specified for the '{2}'.</value>
+  </data>
+  <data name="BindingIndexAndMessage" xml:space="preserve">
+    <value>    [{0}]: {1}</value>
+  </data>
+  <data name="BothTypesConvertToOther" xml:space="preserve">
+    <value>Both of the types '{0}' and '{1}' convert to the other</value>
+  </data>
+  <data name="CannotConvertValue" xml:space="preserve">
+    <value>A value of type '{0}' cannot be converted to type '{1}'</value>
+  </data>
+  <data name="CannotIndexMultiDimArray" xml:space="preserve">
+    <value>Indexing of multi-dimensional arrays is not supported</value>
+  </data>
+  <data name="CannotSetBothProperties" xml:space="preserve">
+    <value>The properties '{0}' and '{1}' cannot be set at the same time in '{2}'.</value>
+  </data>
+  <data name="CannotSetOnlyOneProperty" xml:space="preserve">
+    <value>The property '{0}' cannot be set without setting the '{1}' in '{2}'.</value>
+  </data>
+  <data name="ChannelFactoryNotSupported" xml:space="preserve">
+    <value>The '{0}' type does not support building '{1}' instances.</value>
+  </data>
+  <data name="ChannelShapeNotSupported" xml:space="preserve">
+    <value>The '{0}' type does not support the '{1}' channel shape. Implement the '{2}' channel shape to use this type.</value>
+  </data>
+  <data name="CloseBracketOrCommaExpected" xml:space="preserve">
+    <value>']' or ',' expected</value>
+  </data>
+  <data name="CloseParenOrCommaExpected" xml:space="preserve">
+    <value>')' or ',' expected</value>
+  </data>
+  <data name="CloseParenOrOperatorExpected" xml:space="preserve">
+    <value>')' or operator expected</value>
+  </data>
+  <data name="ColonExpected" xml:space="preserve">
+    <value>':' expected</value>
+  </data>
+  <data name="ConfigInvalidBindingConfigurationName" xml:space="preserve">
+    <value>The '{1}' binding does not have a configured binding named '{0}'.</value>
+  </data>
+  <data name="DefaultEndpointsMustBeAddedFirst" xml:space="preserve">
+    <value>Default endpoints must be added before any additional endpoints. Please change the order so that default endpoints are added first.</value>
+  </data>
+  <data name="DefaultEndpointsServiceWithMultipleContracts" xml:space="preserve">
+    <value>Service '{0}' implements multiple ServiceContract types, and no endpoints are defined in the configuration file.  The ServiceHost of type '{1}'  can set up default endpoints, but only if the service implements only a single ServiceContract. Either change the service to only implement a single ServiceContract, or else define endpoints for the service explicitly in the configuration file.</value>
+  </data>
+  <data name="DefaultEndpointsServiceWithNoContract" xml:space="preserve">
+    <value>Service '{0}' does not implement a ServiceContract type.  The ServiceHost of type '{1}' cannot setup default endpoints if the service does not implement a ServiceContract type.</value>
+  </data>
+  <data name="DelegatingHandlerArrayFromFuncContainsNullItem" xml:space="preserve">
+    <value>The '{0}' list created by the Func '{1}' is invalid because it contains one or more null items.</value>
+  </data>
+  <data name="DelegatingHandlerArrayHasNonNullInnerHandler" xml:space="preserve">
+    <value>The '{0}' list is invalid because the property '{1}' of '{2}' is not null.</value>
+  </data>
+  <data name="DigitExpected" xml:space="preserve">
+    <value>Digit expected</value>
+  </data>
+  <data name="DotOrOpenParenExpected" xml:space="preserve">
+    <value>'.' or '(' expected</value>
+  </data>
+  <data name="DuplicateIdentifier" xml:space="preserve">
+    <value>The identifier '{0}' was defined more than once</value>
+  </data>
+  <data name="EmptyValidationStack" xml:space="preserve">
+    <value>Validation stack is empty.</value>
+  </data>
+  <data name="EncoderMessageVersionMismatch" xml:space="preserve">
+    <value>The message version of the outgoing message ({0}) does not match that of the encoder ({1}). Make sure the binding is configured with the same version as the message.</value>
+  </data>
+  <data name="ExpressionExpected" xml:space="preserve">
+    <value>Expression expected</value>
+  </data>
+  <data name="ExpressionTypeMismatch" xml:space="preserve">
+    <value>Expression of type '{0}' expected</value>
+  </data>
+  <data name="FirstExprMustBeBool" xml:space="preserve">
+    <value>The first expression must be of type 'bool'</value>
+  </data>
+  <data name="HelpExampleGeneratorHandlerNotFound" xml:space="preserve">
+    <value>Handler for type {0} not found.</value>
+  </data>
+  <data name="HelpExampleGeneratorLanguage" xml:space="preserve">
+    <value>en-us</value>
+  </data>
+  <data name="HelpExampleGeneratorMaxDepthLevelReached" xml:space="preserve">
+    <value>Max depth level reached at {0}.</value>
+  </data>
+  <data name="HelpExampleGeneratorSchemaObjectNotSupported" xml:space="preserve">
+    <value>Schema object {0} not supported.</value>
+  </data>
+  <data name="HelpExampleGeneratorStringContent" xml:space="preserve">
+    <value>String content</value>
+  </data>
+  <data name="HelpExampleGeneratorThisElementContainsText" xml:space="preserve">
+    <value>This element contains text.</value>
+  </data>
+  <data name="HelpPageAdditionalRequestSchema" xml:space="preserve">
+    <value>Additional request Xml Schemas:</value>
+  </data>
+  <data name="HelpPageAdditionalResponseSchema" xml:space="preserve">
+    <value>Additional response Xml Schemas:</value>
+  </data>
+  <data name="HelpPageBody" xml:space="preserve">
+    <value>Body</value>
+  </data>
+  <data name="HelpPageBodyIsEmpty" xml:space="preserve">
+    <value>The {0} body is empty.</value>
+  </data>
+  <data name="HelpPageBodyIsWrapped" xml:space="preserve">
+    <value>Cannot infer schema. The {0} body is wrapped.</value>
+  </data>
+  <data name="HelpPageCallbackText" xml:space="preserve">
+    <value>&lt;p xmlns="http://www.w3.org/1999/xhtml"&gt;This operation supports JSONP responses. The callback function can be specified using the &lt;b&gt;"&lt;span class="javascript-callback"&gt;{0}&lt;/span&gt;"&lt;/b&gt; Url query parameter.&lt;/p&gt;</value>
+  </data>
+  <data name="HelpPageCouldNotGenerateSchema" xml:space="preserve">
+    <value>Could not generate schema document.</value>
+  </data>
+  <data name="HelpPageDefaultDescription" xml:space="preserve">
+    <value>Service at {0}</value>
+  </data>
+  <data name="HelpPageDescription" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="HelpPageEndpointNotFound" xml:space="preserve">
+    <value>Endpoint not found.</value>
+  </data>
+  <data name="HelpPageEndpointNotFoundWithLink" xml:space="preserve">
+    <value>&lt;p&gt;Endpoint not found. Please see the &lt;a rel="help-page" href="{0}"&gt;service help page&lt;/a&gt; for constructing valid requests to the service.&lt;/p&gt;</value>
+  </data>
+  <data name="HelpPageExample" xml:space="preserve">
+    <value>Example</value>
+  </data>
+  <data name="HelpPageFailedToCreateErrorMessage" xml:space="preserve">
+    <value>Failed to create error response message</value>
+  </data>
+  <data name="HelpPageFormat" xml:space="preserve">
+    <value>Format</value>
+  </data>
+  <data name="HelpPageIsAtom10Entry" xml:space="preserve">
+    <value>The {0} body is an Atom 1.0 syndication entry. See http://tools.ietf.org/html/rfc4287 for more details.</value>
+  </data>
+  <data name="HelpPageIsAtom10Feed" xml:space="preserve">
+    <value>The {0} body is an Atom 1.0 syndication feed. See http://tools.ietf.org/html/rfc4287 for more details.</value>
+  </data>
+  <data name="HelpPageIsAtomPubCategoriesDocument" xml:space="preserve">
+    <value>The {0} body is an Atom Pub categories document. See http://www.rfc-editor.org/rfc/rfc5023.txt for more details.</value>
+  </data>
+  <data name="HelpPageIsAtomPubServiceDocument" xml:space="preserve">
+    <value>The {0} body is an Atom Pub service document. See http://www.rfc-editor.org/rfc/rfc5023.txt for more details.</value>
+  </data>
+  <data name="HelpPageIsMessage" xml:space="preserve">
+    <value>The {0} body cannot be inferred.</value>
+  </data>
+  <data name="HelpPageIsRSS20Feed" xml:space="preserve">
+    <value>The {0} body is an RSS 2.0 syndication feed. See http://validator.w3.org/feed/docs/rss2.html for more details.</value>
+  </data>
+  <data name="HelpPageIsStream" xml:space="preserve">
+    <value>The {0} body is a byte stream.</value>
+  </data>
+  <data name="HelpPageIsSyndication" xml:space="preserve">
+    <value>The {0} body is a syndication feed.</value>
+  </data>
+  <data name="HelpPageIsXML" xml:space="preserve">
+    <value>The {0} body is arbitrary XML.</value>
+  </data>
+  <data name="HelpPageJsonRequest" xml:space="preserve">
+    <value>The following is an example request Json body:</value>
+  </data>
+  <data name="HelpPageJsonResponse" xml:space="preserve">
+    <value>The following is an example response Json body:</value>
+  </data>
+  <data name="HelpPageMessageDirection" xml:space="preserve">
+    <value>Message direction</value>
+  </data>
+  <data name="HelpPageMethod" xml:space="preserve">
+    <value>Method</value>
+  </data>
+  <data name="HelpPageMethodNotAllowed" xml:space="preserve">
+    <value>Method not allowed.</value>
+  </data>
+  <data name="HelpPageMethodNotAllowedWithLink" xml:space="preserve">
+    <value>&lt;p&gt;Method not allowed. Please see the &lt;a rel="help-page" href="{0}"&gt;service help page&lt;/a&gt; for constructing valid requests to the service.&lt;/p&gt;</value>
+  </data>
+  <data name="HelpPageNA" xml:space="preserve">
+    <value>N/A</value>
+  </data>
+  <data name="HelpPageNotSupportedInScripts" xml:space="preserve">
+    <value>Help Page is not supported for WebScript endpoints.</value>
+  </data>
+  <data name="HelpPageOperationMethod" xml:space="preserve">
+    <value>&lt;p  xmlns="http://www.w3.org/1999/xhtml"&gt;&lt;b&gt;HTTP Method: &lt;/b&gt;&lt;span class="method"&gt;{0}&lt;/span&gt;&lt;/p&gt;</value>
+  </data>
+  <data name="HelpPageOperationsAt" xml:space="preserve">
+    <value>Operations at {0}</value>
+  </data>
+  <data name="HelpPageOperationUri" xml:space="preserve">
+    <value>&lt;p  xmlns="http://www.w3.org/1999/xhtml"&gt;&lt;b&gt;Url: &lt;/b&gt;&lt;span class="uri-template"&gt;&lt;a href="{0}"&gt;{0}&lt;/a&gt;&lt;/span&gt;&lt;/p&gt;</value>
+  </data>
+  <data name="HelpPageRedirect" xml:space="preserve">
+    <value>&lt;p&gt;There is no operation listening for &lt;a href="{0}"&gt;{0}&lt;/a&gt;, but there is an operation listening for &lt;a href="{1}"&gt;{1}&lt;/a&gt;, so you are being redirected there.&lt;/p&gt;</value>
+  </data>
+  <data name="HelpPageReferenceFor" xml:space="preserve">
+    <value>Reference for  {0}</value>
+  </data>
+  <data name="HelpPageRequest" xml:space="preserve">
+    <value>Request</value>
+  </data>
+  <data name="HelpPageRequestErrorTitle" xml:space="preserve">
+    <value>Request Error</value>
+  </data>
+  <data name="HelpPageRequestSchema" xml:space="preserve">
+    <value>The following is the request Xml Schema:</value>
+  </data>
+  <data name="HelpPageResponse" xml:space="preserve">
+    <value>Response</value>
+  </data>
+  <data name="HelpPageResponseSchema" xml:space="preserve">
+    <value>The following is the response Xml Schema:</value>
+  </data>
+  <data name="HelpPageSchema" xml:space="preserve">
+    <value>Schema</value>
+  </data>
+  <data name="HelpPageStaticText" xml:space="preserve">
+    <value>This page describes the service operations at this endpoint.</value>
+  </data>
+  <data name="HelpPageTitleText" xml:space="preserve">
+    <value>Service</value>
+  </data>
+  <data name="HelpPageUnknown" xml:space="preserve">
+    <value>Unknown</value>
+  </data>
+  <data name="HelpPageUri" xml:space="preserve">
+    <value>Uri</value>
+  </data>
+  <data name="HelpPageValidElementOfType" xml:space="preserve">
+    <value>Valid elements of type: {0}</value>
+  </data>
+  <data name="HelpPageXmlRequest" xml:space="preserve">
+    <value>The following is an example request Xml body:</value>
+  </data>
+  <data name="HelpPageXmlResponse" xml:space="preserve">
+    <value>The following is an example response Xml body:</value>
+  </data>
+  <data name="HelpServerErrorProcessingRequest" xml:space="preserve">
+    <value>The server encountered an error processing the request. See server logs for more details.</value>
+  </data>
+  <data name="HelpServerErrorProcessingRequestWithDetails" xml:space="preserve">
+    <value>The server encountered an error processing the request. The exception message is '{0}'. See server logs for more details. The exception stack trace is: </value>
+  </data>
+  <data name="HelpServerErrorProcessingRequestWithDetailsAndLink" xml:space="preserve">
+    <value>&lt;p&gt;The server encountered an error processing the request. Please see the &lt;a rel="help-page" href="{0}"&gt;service help page&lt;/a&gt; for constructing valid requests to the service. The exception message is '{1}'. See server logs for more details. The exception stack trace is: &lt;/p&gt;</value>
+  </data>
+  <data name="HelpServerErrorProcessingRequestWithLink" xml:space="preserve">
+    <value>&lt;p&gt;The server encountered an error processing the request. Please see the &lt;a rel="help-page" href="{0}"&gt;service help page&lt;/a&gt; for constructing valid requests to the service.&lt;/p&gt;</value>
+  </data>
+  <data name="HtmlPageEndpointNotFound" xml:space="preserve">
+    <value>Endpoint not found.</value>
+  </data>
+  <data name="HtmlPageEndpointNotFoundWithLink" xml:space="preserve">
+    <value>&lt;p&gt;Endpoint not found. Please see the &lt;a rel="help-page" href="{0}"&gt;service help page&lt;/a&gt; for constructing valid requests to the service.&lt;/p&gt;</value>
+  </data>
+  <data name="HtmlPageMethodNotAllowed" xml:space="preserve">
+    <value>Method not allowed.</value>
+  </data>
+  <data name="HtmlPageMethodNotAllowedWithLink" xml:space="preserve">
+    <value>&lt;p&gt;Method not allowed. Please see the &lt;a rel="help-page" href="{0}"&gt;service help page&lt;/a&gt; for constructing valid requests to the service.&lt;/p&gt;</value>
+  </data>
+  <data name="HtmlPageRedirect" xml:space="preserve">
+    <value>&lt;p&gt;There is no operation listening for &lt;a href="{0}"&gt;{0}&lt;/a&gt;, but there is an operation listening for &lt;a href="{1}"&gt;{1}&lt;/a&gt;, so you are being redirected there.&lt;/p&gt;</value>
+  </data>
+  <data name="HtmlPageRequestErrorTitle" xml:space="preserve">
+    <value>Request Error</value>
+  </data>
+  <data name="HtmlPageServerErrorProcessingRequest" xml:space="preserve">
+    <value>The server encountered an error processing the request. See server logs for more details.</value>
+  </data>
+  <data name="HtmlPageServerErrorProcessingRequestWithDetails" xml:space="preserve">
+    <value>The server encountered an error processing the request. The exception message is '{0}'. See server logs for more details. The exception stack trace is: </value>
+  </data>
+  <data name="HtmlPageServerErrorProcessingRequestWithDetailsAndLink" xml:space="preserve">
+    <value>&lt;p&gt;The server encountered an error processing the request. Please see the &lt;a rel="help-page" href="{0}"&gt;service help page&lt;/a&gt; for constructing valid requests to the service. The exception message is '{1}'. See server logs for more details. The exception stack trace is: &lt;/p&gt;</value>
+  </data>
+  <data name="HtmlPageServerErrorProcessingRequestWithLink" xml:space="preserve">
+    <value>&lt;p&gt;The server encountered an error processing the request. Please see the &lt;a rel="help-page" href="{0}"&gt;service help page&lt;/a&gt; for constructing valid requests to the service.&lt;/p&gt;</value>
+  </data>
+  <data name="HtmlPageTitleText" xml:space="preserve">
+    <value>Service</value>
+  </data>
+  <data name="HttpBehaviorBindingRequired" xml:space="preserve">
+    <value>The ServiceEndpoint for '{0}' must have a binding.</value>
+  </data>
+  <data name="HttpBehaviorNotFoundWithEndpoint" xml:space="preserve">
+    <value>The standard endpoint of type '{0}' does not have a behavior of type '{1}'.  The endpoint is initialized with the proper behavior and it should not be removed or replaced.</value>
+  </data>
+  <data name="HttpConfigurationIsReadOnly" xml:space="preserve">
+    <value>The '{0}' instance has already been applied to one or more '{1}'. '{0}' can only be modified before passing it to the first '{1}'.</value>
+  </data>
+  <data name="HttpDescriptionPropertyImmutable" xml:space="preserve">
+    <value>The '{0}' property cannot be modified on the associated '{1}'.</value>
+  </data>
+  <data name="HttpEndpointNotSupported" xml:space="preserve">
+    <value>The '{0}' is not supported on the client side.  The '{1}' is the recommended API for sending HTTP requests.</value>
+  </data>
+  <data name="HttpEndpointRequiredBinding" xml:space="preserve">
+    <value>The '{0}' requires the '{1}' binding.</value>
+  </data>
+  <data name="HttpEndpointRequiresHttpBinding" xml:space="preserve">
+    <value>The standard endpoint of type '{0}' does not have a binding of type '{1}'.  The endpoint is initialized with the proper binding and it should not be removed or replaced.</value>
+  </data>
+  <data name="HttpErrorMessageNullResponse" xml:space="preserve">
+    <value>The error handler of type '{0}' returned '{1}' in '{2}' but the '{3}' is null.</value>
+  </data>
+  <data name="HttpInstanceProviderNullRequest" xml:space="preserve">
+    <value>The instance provider of type '{0}' received a null '{1}' in '{2}'.</value>
+  </data>
+  <data name="HttpMemoryChannelBadListenUriScheme" xml:space="preserve">
+    <value>Invalid URI scheme: '{0}'. The '{1}' must have a '{2}' with an '{3}' URI scheme.</value>
+  </data>
+  <data name="HttpMemoryChannelExplicitListenUriMode" xml:space="preserve">
+    <value>Only '{0}' is supported as '{1}' value for the '{2}' transport.</value>
+  </data>
+  <data name="HttpMemoryChannelNullListenUri" xml:space="preserve">
+    <value>The '{0}' cannot have a null '{1}'</value>
+  </data>
+  <data name="HttpMemoryChannelRelativeListenUri" xml:space="preserve">
+    <value>Invalid listen URI base address: '{0}'. The '{1}' must have an absolute URI as '{2}'.</value>
+  </data>
+  <data name="HttpMessageConfigurationPropertyTypeMismatch" xml:space="preserve">
+    <value>"The configuration file specified type '{0}' for the '{1}' property but that type is not a subtype of '{2}'.  The '{1}' must be a public class that is a subtype of '{2}', and it must have a public default constructor.</value>
+  </data>
+  <data name="HttpMessageEncoderFactoryDoesNotSupportSessionEncoder" xml:space="preserve">
+    <value>The '{0}' type does not support a session encoder.</value>
+  </data>
+  <data name="HttpMessageFormatterMessageVersion" xml:space="preserve">
+    <value>The formatter of type '{0}' only supports bindings that ensure the message version is '{1}.{2}'</value>
+  </data>
+  <data name="HttpMessageFormatterNullMessage" xml:space="preserve">
+    <value>The formatter of type '{0}' received a null '{1}' in '{2}'.</value>
+  </data>
+  <data name="HttpMessageHandlerChannelFactoryNullPipeline" xml:space="preserve">
+    <value>'{0}' cannot return a null '{1}' instance. Please ensure that '{0}' returns a valid '{1}' instance.</value>
+  </data>
+  <data name="HttpMessageHandlerChannelInvalidResponse" xml:space="preserve">
+    <value>'{0}' did not receive a '{1}' reply containing a '{2}' instance. Please ensure that replies contain a '{2}' instance.</value>
+  </data>
+  <data name="HttpMessageHandlerInvalidMessage" xml:space="preserve">
+    <value>Could not obtain an HTTP request from message of type '{0}'.</value>
+  </data>
+  <data name="HttpMessageHandlerMissingProperty" xml:space="preserve">
+    <value>A property required for completing the processing of this '{0}' is missing. The property with key '{1}' cannot be removed from an incoming '{0}' request.</value>
+  </data>
+  <data name="HttpMessageHandlerNoSyncSupport" xml:space="preserve">
+    <value>This '{0}' does not support synchronous '{1}' operations. Please use the asynchronous '{2}' instead.</value>
+  </data>
+  <data name="HttpMessageHandlerRequestContextReplyPathMismatch1" xml:space="preserve">
+    <value>The '{0}' for this endpoint indicates that responses should be sent asynchronously but the '{1}' channel received a synchronous response. Please correct this discrepancy either by setting the behavior to be synchronous or use the asynchronous reply path for sending responses.</value>
+  </data>
+  <data name="HttpMessageHandlerRequestContextReplyPathMismatch2" xml:space="preserve">
+    <value>The '{0}' for this endpoint indicates that responses should be sent synchronously but the '{1}' channel received an asynchronous response. Please correct this discrepancy either by setting the behavior to be asynchronous or use the synchronous reply path for sending responses.</value>
+  </data>
+  <data name="HttpMessageHandlerTypeNotSupported" xml:space="preserve">
+    <value>Invalid handler provided: '{0}'. It must inherit from base type '{1}', cannot be abstract, and must expose a default public constructor.</value>
+  </data>
+  <data name="HttpMessageInspectorNullMessage" xml:space="preserve">
+    <value>The inspector of type '{0}' received a null '{1}' in '{2}'.</value>
+  </data>
+  <data name="HttpOperationDescriptionNullOperationDescription" xml:space="preserve">
+    <value>No '{0}' is available.</value>
+  </data>
+  <data name="HttpOperationHandlerFailedToConvertInputString" xml:space="preserve">
+    <value>The {0} '{1}' of service operation '{2}' expected a string value that could be parsed as a '{3}' for input parameter '{4}' but the parsing failed with the message: {5} See the inner exception for more details.</value>
+  </data>
+  <data name="HttpOperationHandlerFailedToGetInnerContent" xml:space="preserve">
+    <value>The {0} '{1}' of service operation '{2}' expected a value of type '{3}' for input parameter '{4}' but retrieving the value from the received '{5}' instance failed with the following message: {6} See the inner exception for more details.</value>
+  </data>
+  <data name="HttpOperationHandlerProducedWrongNumberOfValues" xml:space="preserve">
+    <value>The {0} '{1}' of service operation '{2}' was expected to return '{3}' values but returned '{4}' values.</value>
+  </data>
+  <data name="HttpOperationHandlerProducedWrongType" xml:space="preserve">
+    <value>The {0} '{1}' of service operation '{2}' was expected to return a value of type '{3}' assignable to the '{4}' output parameter but returned a value of type '{5}'.</value>
+  </data>
+  <data name="HttpOperationHandlerReceivedWrongNumberOfValues" xml:space="preserve">
+    <value>The {0} '{1}' of service operation '{2}' expected '{3}' values but received '{4}' values.</value>
+  </data>
+  <data name="HttpOperationHandlerReceivedWrongType" xml:space="preserve">
+    <value>The {0} '{1}' of service operation '{2}' expected a value assignable to type '{3}' for input parameter '{4}' but received a value of type '{5}'.</value>
+  </data>
+  <data name="HttpOperationSelectorNullOperation" xml:space="preserve">
+    <value>The operation selector of type '{0}' selected a null operation.</value>
+  </data>
+  <data name="HttpOperationSelectorNullRequest" xml:space="preserve">
+    <value>The operation selector of type '{0}' received a null '{1}' in '{2}'.</value>
+  </data>
+  <data name="HttpResponseExceptionMessage" xml:space="preserve">
+    <value>The response message returned by the {0} property of this exception should be immediately returned to the client.  No further handling of the request message is required.</value>
+  </data>
+  <data name="HttpServiceEndpointCannotHaveMessageHeaders" xml:space="preserve">
+    <value>The endpoint address '{0}' has message headers and is being used with a binding that's configured for message version None. Either change the endpoint address to not contain message headers or change the binding to be one that supports SOAP (for example, WSHttpBinding).</value>
+  </data>
+  <data name="IdentifierExpected" xml:space="preserve">
+    <value>Identifier expected</value>
+  </data>
+  <data name="IifRequiresThreeArgs" xml:space="preserve">
+    <value>The 'IIF' function requires three arguments</value>
+  </data>
+  <data name="IncompatibleOperand" xml:space="preserve">
+    <value>Operator '{0}' incompatible with operand type '{1}'</value>
+  </data>
+  <data name="IncompatibleOperands" xml:space="preserve">
+    <value>Operator '{0}' incompatible with operand types '{1}' and '{2}'</value>
+  </data>
+  <data name="InputTypeListEmptyError" xml:space="preserve">
+    <value>The input handler list cannot be empty.</value>
+  </data>
+  <data name="InvalidBaseUriScheme" xml:space="preserve">
+    <value>The provided URI scheme '{0}' is invalid; expected '{1}' or '{2}'.</value>
+  </data>
+  <data name="InvalidCharacter" xml:space="preserve">
+    <value>Syntax error '{0}'</value>
+  </data>
+  <data name="InvalidCharacterLiteral" xml:space="preserve">
+    <value>Character literal must contain exactly one character</value>
+  </data>
+  <data name="InvalidIndex" xml:space="preserve">
+    <value>Array index must be an integer expression</value>
+  </data>
+  <data name="InvalidIntegerLiteral" xml:space="preserve">
+    <value>Invalid integer literal '{0}'</value>
+  </data>
+  <data name="InvalidManualAddressingValue" xml:space="preserve">
+    <value>The endpoint at '{0}' must have a binding with a transport binding element that has 'ManualAddressing' set to true.</value>
+  </data>
+  <data name="InvalidMessageContractParameter" xml:space="preserve">
+    <value>Operation '{0}' on contract '{1}' is invalid since it has a '{2}' parameter (of type '{3}').</value>
+  </data>
+  <data name="InvalidMessageEncodingBindingElement" xml:space="preserve">
+    <value>The endpoint at '{0}' must have a binding with a '{1}' of type '{2}' or a '{3}' of type '{4}'.</value>
+  </data>
+  <data name="InvalidMessageParameter" xml:space="preserve">
+    <value>Operation '{0}' on contract '{1}' is invalid since it has message parameter '{2}' of type '{3}'.</value>
+  </data>
+  <data name="InvalidMessageVersion" xml:space="preserve">
+    <value>The endpoint at '{0}' must have a binding with a message version of 'MessageVersion.None'.</value>
+  </data>
+  <data name="InvalidNullMediaRange" xml:space="preserve">
+    <value>The null value at index '{0}' is not valid media range.</value>
+  </data>
+  <data name="InvalidOperationWithMessageHeaders" xml:space="preserve">
+    <value>Operation '{0}' on contract '{1}' is invalid since it has once or more message headers.</value>
+  </data>
+  <data name="InvalidParameterForContentHandler" xml:space="preserve">
+    <value>The {0} '{1}' of type '{2}' cannot be used with the {3}.</value>
+  </data>
+  <data name="InvalidQueryOperator" xml:space="preserve">
+    <value>Invalid query operator '{0}'.</value>
+  </data>
+  <data name="InvalidRealLiteral" xml:space="preserve">
+    <value>Invalid real literal '{0}'</value>
+  </data>
+  <data name="InvalidRequestContentParameter" xml:space="preserve">
+    <value>The service operation '{0}' has an input parameter of type '{1}' associated with the request message content that is not supported by the {2}.</value>
+  </data>
+  <data name="InvalidResponseContentParameter" xml:space="preserve">
+    <value>The service operation '{0}' has an output parameter of type '{1}' associated with the request message content that is not supported by the {2}.</value>
+  </data>
+  <data name="InvalidReturnValueContentParameter" xml:space="preserve">
+    <value>The service operation '{0}' has a return value of type '{1}' associated with the request message content that is not supported by the {2}.</value>
+  </data>
+  <data name="InvalidUriScheme" xml:space="preserve">
+    <value>The endpoint at '{0}' must have a binding with a scheme of 'http' or 'https'.</value>
+  </data>
+  <data name="InvalidXmlSerializerFormatAttribute" xml:space="preserve">
+    <value>Operation '{0}' on contract '{1}, is invalid since it has an '{2}' configured with OperationUse Encoded or OperationStyle Rpc.</value>
+  </data>
+  <data name="MediaRangeAlreadyAdded" xml:space="preserve">
+    <value>The media range value '{0}' at index '{1}' has already been added to the collection of media ranges.</value>
+  </data>
+  <data name="MediaRangeAlreadyMapped" xml:space="preserve">
+    <value>The media range '{0}' has already been mapped to media-type '{1}' and cannot be mapped to a second media-type of '{2}'.</value>
+  </data>
+  <data name="MessageBodyIsHttpRequestMessageWithKnownContentLength" xml:space="preserve">
+    <value>HTTP request message body with a content length of '{0}' bytes.</value>
+  </data>
+  <data name="MessageBodyIsHttpRequestMessageWithUnknownContentLength" xml:space="preserve">
+    <value>HTTP request message body with an undetermined content length.</value>
+  </data>
+  <data name="MessageBodyIsHttpResponseMessageWithKnownContentLength" xml:space="preserve">
+    <value>HTTP response message body with a content length of '{0}' bytes.</value>
+  </data>
+  <data name="MessageBodyIsHttpResponseMessageWithUnknownContentLength" xml:space="preserve">
+    <value>HTTP response message body with an undetermined content length.</value>
+  </data>
+  <data name="MessageClosed" xml:space="preserve">
+    <value>Message is closed.</value>
+  </data>
+  <data name="MessageInvalidForHttpMessageEncoder" xml:space="preserve">
+    <value>The response message is not valid for the encoder used by the '{0}' binding, which requires that the response message have been created with the '{1}' extension method on the '{2}' class.</value>
+  </data>
+  <data name="MessageReadWriteCopyNotSupported" xml:space="preserve">
+    <value>The message instance does not support being read, written out or copied.  Use the '{0}' or '{1}' extension methods on the '{2}' class to access the message content.</value>
+  </data>
+  <data name="MethodIsVoid" xml:space="preserve">
+    <value>Method '{0}' in type '{1}' does not return a value</value>
+  </data>
+  <data name="MethodsAreInaccessible" xml:space="preserve">
+    <value>Methods on type '{0}' are not accessible</value>
+  </data>
+  <data name="MultipleOperationsWithSameMethodAndUriTemplate" xml:space="preserve">
+    <value>There are multiple operations with HTTP method '{1}' and a UriTemplate that is equivalent to '{0}'. Each operation requires a unique combination of UriTemplate and Method to unambiguously dispatch messages.</value>
+  </data>
+  <data name="MultipleRequestContentParameters" xml:space="preserve">
+    <value>The {0} only supports service operations that have a single input parameter associated with the request message content.  Service operation '{1}' has '{2}' input parameters associated with the content of the request message:</value>
+  </data>
+  <data name="MultipleResponseContentParameters" xml:space="preserve">
+    <value>The {0} only supports service operations that have a return value or single output parameter associated with the response message content.  Service operation '{1}' has '{2}' outputs associated with the content of the response message:</value>
+  </data>
+  <data name="MultipleTypeOnlyBindingRemedy" xml:space="preserve">
+    <value>Either eliminate all but one of these sources, or rename ‘{0}’ to match the output parameter of the source you want.</value>
+  </data>
+  <data name="MultipleTypeParametersForHttpContentType" xml:space="preserve">
+    <value>Unable to determine the type of the content because the type '{0}' has two or more type parameters.</value>
+  </data>
+  <data name="MultipleVariablesInSingleSegmentOrQueryValue" xml:space="preserve">
+    <value>Multiple variables in a single segment or query value is not supported.</value>
+  </data>
+  <data name="MultipleWebAttributes" xml:space="preserve">
+    <value>Operation '{0}' in contract '{1}' has both '{2}' and '{3}'; only one can be present.</value>
+  </data>
+  <data name="NeitherTypeConvertsToOther" xml:space="preserve">
+    <value>Neither type '{0}' or '{1}' converts to the other</value>
+  </data>
+  <data name="NoApplicableAggregate" xml:space="preserve">
+    <value>No applicable aggregate method '{0}' exists</value>
+  </data>
+  <data name="NoApplicableIndexer" xml:space="preserve">
+    <value>No applicable indexer exists in type '{0}'</value>
+  </data>
+  <data name="NoApplicableMethod" xml:space="preserve">
+    <value>No applicable method '{0}' exists in type '{1}'</value>
+  </data>
+  <data name="NoItInScope" xml:space="preserve">
+    <value>No 'it' is in scope</value>
+  </data>
+  <data name="NoMatchingConstructor" xml:space="preserve">
+    <value>No matching constructor in type '{0}'</value>
+  </data>
+  <data name="NonHttpMessageMustBeEmpty" xml:space="preserve">
+    <value>The message instance is non-empty but the '{0}' extension method on the '{1}' class returned null.  Message instances that do not support the '{0}' extension method must be empty. </value>
+  </data>
+  <data name="NullValueInArrayParameterFromGetParameters" xml:space="preserve">
+    <value>The {0} '{1}' of service operation '{2}' returned a collection from the method '{3}' that had a null value at index '{4}'.</value>
+  </data>
+  <data name="OnlyMessageVersionNoneSupportedOnHttpMessageEncodingBindingElement" xml:space="preserve">
+    <value>The '{0}' type supports only MessageVersion.None. </value>
+  </data>
+  <data name="OpenParenExpected" xml:space="preserve">
+    <value>'(' expected</value>
+  </data>
+  <data name="OperationCanNotReturnHttpReferenceType" xml:space="preserve">
+    <value>Operation '{0}' on contract '{1}' is invalid because it returns a value of type '{2}' or has an output parameter of type '{2}'.  To access '{2}' within an operation, include it as an input parameter and modify its properties.</value>
+  </data>
+  <data name="OperationCanNotReturnXmlAndBeJson" xml:space="preserve">
+    <value>Operation '{0}' on contract '{1}' is invalid since it returns a {2} or has an output parameter of type {2} and has a response format explicitly set to Json.</value>
+  </data>
+  <data name="ParameterMustBeLessThanOrEqualSecondParameter" xml:space="preserve">
+    <value>The value of the '{0}' parameter must be less than or equal to the value of the '{1}' parameter.</value>
+  </data>
+  <data name="ParseExceptionFormat" xml:space="preserve">
+    <value>{0} (at index {1})</value>
+  </data>
+  <data name="QueryCompositionFailed" xml:space="preserve">
+    <value>The query could not be applied to the result of the service operation.</value>
+  </data>
+  <data name="RequestHandlerTypeOnlyOutputParameter" xml:space="preserve">
+    <value>Request {0} '{1}' output parameter '{2}' of type '{3}';</value>
+  </data>
+  <data name="RequestHandlerWithMultipleTypeOnlyBindings" xml:space="preserve">
+    <value>The request {0} '{1}' of service operation '{2}' will receive a value for input parameter '{3}' of type '{4}' from these multiple sources:</value>
+  </data>
+  <data name="RequestHandlerWithNoPossibleBindingForNonStringConvertableType" xml:space="preserve">
+    <value>The request {0} '{1}' of service operation '{2}' will never receive a value for input parameter '{3}' of type '{4}'. Ensure that a request {0} that executes prior to the '{5}' {0} has an output parameter with a type assignable to '{4}'.</value>
+  </data>
+  <data name="RequestHandlerWithNoPossibleBindingForStringConvertableType" xml:space="preserve">
+    <value>The request {0} '{1}' of service operation '{2}' will never receive a value for input parameter '{3}' of type '{4}'. Ensure that a request {0} that executes prior to the '{5}' HttpOperationHandler has an output parameter with a type assignable to '{4}' or that the output parameter has the name '{3}' and provides a string value that can be parsed as a '{4}'.</value>
+  </data>
+  <data name="RequestMissingHttpRequestMessageProperty" xml:space="preserve">
+    <value>The incoming message does not have the required '{0}' property of type '{1}'.</value>
+  </data>
+  <data name="RequestMissingToHeader" xml:space="preserve">
+    <value>The incoming message does not have the required 'To' header.</value>
+  </data>
+  <data name="RequestParameterWithContentType" xml:space="preserve">
+    <value>Parameter '{0}' is associated with the request message content because it is of type '{1}';</value>
+  </data>
+  <data name="RequestParameterWithIsContentParameterSet" xml:space="preserve">
+    <value>Parameter '{0}' is associated with the request message content because it's {1} property is set to '{2}';</value>
+  </data>
+  <data name="RequiresQueryableType" xml:space="preserve">
+    <value>The underlying type must implement System.Collections.Generic.IEnumerable'1.</value>
+  </data>
+  <data name="ResponseHandlerTypeOnlyOutputParameter" xml:space="preserve">
+    <value>Response {0} '{1}' output parameter '{2}' of type '{3}';</value>
+  </data>
+  <data name="ResponseHandlerWithMultipleTypeOnlyBindings" xml:space="preserve">
+    <value>The response {0} '{1}' for service operation '{2}' 
+will receive a value for input parameter '{3}' of type '{4}' from these multiple sources:</value>
+  </data>
+  <data name="ResponseHandlerWithNoPossibleBindingForNonStringConvertableType" xml:space="preserve">
+    <value>The response {0} '{1}' of service operation '{2}' will never receive a value for the input parameter '{3}' of type '{4}'. Ensure that a request {0}, the service operation, or a response HttpOperationHandler that executes prior to the '{5}' {0} has an output parameter with a type assignable to '{4}'.</value>
+  </data>
+  <data name="ResponseHandlerWithNoPossibleBindingForStringConvertableType" xml:space="preserve">
+    <value>The response {0} '{1}' of service operation '{2}' will never receive a value for the input parameter '{3}' of type '{4}'. Ensure that at least one request {0}, the service operation, or response {0} that executes prior to the '{5}' {0} has an output parameter with a type assignable to '{4}'  or that the output parameter has the name '{3}' and provides a string value that can be parsed as a '{4}'.</value>
+  </data>
+  <data name="ResponseParameterWithContentType" xml:space="preserve">
+    <value>Parameter '{0}' is associated with the response message content because it is of type '{1}';</value>
+  </data>
+  <data name="ResponseParameterWithIsContentParameterSet" xml:space="preserve">
+    <value>Parameter '{0}' is associated with the response message content because it's {1} property is set to '{2}';</value>
+  </data>
+  <data name="ResponseSinkHandlerWithNoHttpResponseMessageSource" xml:space="preserve">
+    <value>Neither the service operation nor any {0} instances will provide an {1} for service operation '{2}'. Ensure there is at least one {0} with an output parameter of type '{1}' or that the service operation returns an {1}.</value>
+  </data>
+  <data name="ReturnValueWithContentType" xml:space="preserve">
+    <value>The return value is associated with the response message content because it is of type '{0}';</value>
+  </data>
+  <data name="ReturnValueWithIsContentParameterSet" xml:space="preserve">
+    <value>The return value is associated with the response message content because it's {0} property is set to '{1}';</value>
+  </data>
+  <data name="ServiceOperationFailedToConvertInputString" xml:space="preserve">
+    <value>The service operation '{0}' expected a string value that could be parsed as a '{1}' for input parameter '{2}' but the parsing failed with the message: {3} See the inner exception for more details.</value>
+  </data>
+  <data name="ServiceOperationFailedToGetInnerContent" xml:space="preserve">
+    <value>The service operation '{0}' expected a value of type '{1}' for input parameter '{2}' but retrieving the value from the received '{3}' instance failed with the following message: {4} See the inner exception for more details.</value>
+  </data>
+  <data name="ServiceOperationProducedWrongNumberOfValues" xml:space="preserve">
+    <value>The service operation '{0}' was expected to return '{1}' values but returned '{2}' values.</value>
+  </data>
+  <data name="ServiceOperationProducedWrongType" xml:space="preserve">
+    <value>The service operation '{0}' was expected to return a value of type '{1}' assignable to the '{2}' output parameter but returned a value of type '{3}'.</value>
+  </data>
+  <data name="ServiceOperationReceivedWrongNumberOfValues" xml:space="preserve">
+    <value>The service operation '{0}' expected '{1}' values but received '{2}' values.</value>
+  </data>
+  <data name="ServiceOperationReceivedWrongType" xml:space="preserve">
+    <value>The service operation '{0}' expected a value assignable to type '{1}' for input parameter '{2}' but received a value of type '{3}'.</value>
+  </data>
+  <data name="ServiceOperationTypeOnlyOutputParameter" xml:space="preserve">
+    <value>Service operation output parameter '{0}' of type '{1}';</value>
+  </data>
+  <data name="ServiceOperationWithMultipleTypeOnlyBindings" xml:space="preserve">
+    <value>The service operation '{0}' will receive a value for input parameter '{1}' of type '{2}' from these multiple {3} sources:</value>
+  </data>
+  <data name="ServiceOperationWithNoPossibleBindingForNonStringConvertableType" xml:space="preserve">
+    <value>The service operation '{0}' will never receive a value for the input parameter '{1}' of type '{2}'. Ensure that a request {3} has an output parameter with a type assignable to '{2}'.</value>
+  </data>
+  <data name="ServiceOperationWithNoPossibleBindingForStringConvertableType" xml:space="preserve">
+    <value>The service operation '{0}' will never receive a value for the input parameter '{1}' of type '{2}'. Ensure that a request {3} has an output parameter with a type assignable to '{2}' or that the output parameter has the name '{1}' and provides a string value that can be parsed as a '{2}'.</value>
+  </data>
+  <data name="SyntaxError" xml:space="preserve">
+    <value>Syntax error</value>
+  </data>
+  <data name="TypeHasNoNullableForm" xml:space="preserve">
+    <value>Type '{0}' has no nullable form</value>
+  </data>
+  <data name="UnexpectedEOF" xml:space="preserve">
+    <value>Unexpected end of file.</value>
+  </data>
+  <data name="UnknownIdentifier" xml:space="preserve">
+    <value>Unknown identifier '{0}'</value>
+  </data>
+  <data name="UnknownPropertyOrField" xml:space="preserve">
+    <value>No property or field '{0}' exists in type '{1}'</value>
+  </data>
+  <data name="UnknownRequestContentParameter" xml:space="preserve">
+    <value>The {0} is unable to determine the input parameter that should be associated with the request message content for service operation '{1}'. If the operation does not expect content in the request message use the HTTP GET method with the operation. Otherwise, ensure that one input parameter either has it's {2} property set to '{3}' or is a type that is assignable to one of the following: {4}, {5}, {6} or {7}.</value>
+  </data>
+  <data name="UnterminatedStringLiteral" xml:space="preserve">
+    <value>Unterminated string literal</value>
+  </data>
+  <data name="UriCannotBeMultipleLines" xml:space="preserve">
+    <value>Uri cannot be multiple lines.</value>
+  </data>
+  <data name="UriCannotHaveMoreSegmentsThanTemplate" xml:space="preserve">
+    <value>Uri cannot have more segments than the uri template.</value>
+  </data>
+  <data name="UriMustStartWithBaseUri" xml:space="preserve">
+    <value>Uri must start with the base uri.</value>
+  </data>
+  <data name="UriQueryStringInvalid" xml:space="preserve">
+    <value>The query specified in the URI is not valid.</value>
+  </data>
+  <data name="UriSegmentMismatch" xml:space="preserve">
+    <value>A uri segment mismatches with the uri template.</value>
+  </data>
+  <data name="UriTemplateDoesNotMatchUri" xml:space="preserve">
+    <value>The UriTemplate variable values cannot be determined for the uri '{0}' because it does not match the UriTemplate '{1}'.</value>
+  </data>
+  <data name="ValueConversionFailed" xml:space="preserve">
+    <value>A value of type '{0}' cannot be converted into a value of type '{1}'.</value>
+  </data>
+  <data name="InvalidUriNotAbsolute" xml:space="preserve">
+    <value>Invalid base addres: '{0}'. Base address must be an absolute URI.</value>
+  </data>
+  <data name="PositiveIntegerExpectedForODataQueryParameter" xml:space="preserve">
+    <value>The OData query parameter '{0}' has an invalid value. The value should be a positive integer. The provided value was '{1}'</value>
+  </data>
+  <data name="InvalidTypeCreationExpression" xml:space="preserve">
+    <value>Invalid '{0}' type creation expression.</value>
+  </data>
+  <data name="InvalidHexLiteral" xml:space="preserve">
+    <value>Invalid hexadecimal literal.</value>
+  </data>
+</root>

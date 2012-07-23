@@ -1,0 +1,209 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{3566CF5C-C544-4FAB-A96E-AE640B12E97F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MvcApi</RootNamespace>
+    <AssemblyName>MvcApi</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\packages\Newtonsoft.Json.4.5.5\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http">
+      <Private>True</Private>
+      <HintPath>..\..\packages\Microsoft.Net.Http.2.0.20505.0\lib\net40\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+      <Private>True</Private>
+      <HintPath>..\..\packages\Microsoft.Net.Http.2.0.20505.0\lib\net40\System.Net.Http.WebRequest.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ActionMethodSelector.cs" />
+    <Compile Include="ActionResultExtensions.cs" />
+    <Compile Include="ActionType.cs" />
+    <Compile Include="ApiActionDescriptor.cs" />
+    <Compile Include="ApiControllerActionInvoker.cs" />
+    <Compile Include="ApiConfiguration.cs" />
+    <Compile Include="ApiController.cs" />
+    <Compile Include="ApiControllerActionSelector.cs" />
+    <Compile Include="ApiControllerActionSelector_old.cs" />
+    <Compile Include="ApiControllerDescriptor.cs" />
+    <Compile Include="ApiRedirectToRouteResult.cs" />
+    <Compile Include="Async\AsyncDelegates.cs" />
+    <Compile Include="Async\AsyncResultWrapper.cs" />
+    <Compile Include="Async\AsyncVoid.cs" />
+    <Compile Include="Async\SimpleAsyncResult.cs" />
+    <Compile Include="Async\SingleGateEntry.cs" />
+    <Compile Include="Dependencies\EmptyResolver.cs" />
+    <Compile Include="Formatting\CloneableExtensions.cs" />
+    <Compile Include="Formatting\DelegatingEnumerable.cs" />
+    <Compile Include="Collections\QueryableWrapper.cs" />
+    <Compile Include="Collections\IVirtualList.cs" />
+    <Compile Include="Converters\ActionResponseConverter.cs" />
+    <Compile Include="Converters\HttpMessageConverter.cs" />
+    <Compile Include="Converters\VoidHttpMessageConverter.cs" />
+    <Compile Include="Data\DataController.cs" />
+    <Compile Include="Data\DataControllerActionInvoker.cs" />
+    <Compile Include="Data\QueryFilterAttribute.cs" />
+    <Compile Include="Data\QueryResult.cs" />
+    <Compile Include="DictionaryExtensions.cs" />
+    <Compile Include="Error.cs" />
+    <Compile Include="Formatting\ContentNegotiationResult.cs" />
+    <Compile Include="Formatting\DefaultContentNegotiator.cs" />
+    <Compile Include="Formatting\EnumerableTypes.cs" />
+    <Compile Include="Formatting\FormatterContext.cs" />
+    <Compile Include="Formatting\FormattingUtilities.cs" />
+    <Compile Include="Formatting\IContentNegotiator.cs" />
+    <Compile Include="Formatting\IRequiredMemberSelector.cs" />
+    <Compile Include="Formatting\JsonContractFormatter.cs" />
+    <Compile Include="Formatting\JsonContractResolver.cs" />
+    <Compile Include="Formatting\JsonMediaTypeFormatter.cs" />
+    <Compile Include="Formatting\MediaRangeMapping.cs" />
+    <Compile Include="Formatting\MediaTypeConstants.cs" />
+    <Compile Include="Formatting\MediaTypeFormatter.cs" />
+    <Compile Include="Formatting\MediaTypeFormatterCollection.cs" />
+    <Compile Include="Formatting\MediaTypeFormatterMatchRanking.cs" />
+    <Compile Include="Formatting\MediaTypeHeaderValueExtensions.cs" />
+    <Compile Include="Formatting\MediaTypeHeaderValueRange.cs" />
+    <Compile Include="Formatting\MediaTypeMapping.cs" />
+    <Compile Include="Formatting\MediaTypeFormatterMatch.cs" />
+    <Compile Include="Formatting\QueryStringMapping.cs" />
+    <Compile Include="Formatting\RequestHeaderMapping.cs" />
+    <Compile Include="Formatting\StreamMediaTypeFormatter.cs" />
+    <Compile Include="Formatting\StringComparisonHelper.cs" />
+    <Compile Include="Formatting\StringWithQualityHeaderValueComparer.cs" />
+    <Compile Include="Formatting\UriPathExtensionMapping.cs" />
+    <Compile Include="Formatting\ViewMediaTypeFormatter.cs" />
+    <Compile Include="Formatting\XHRRequestHeaderMapping.cs" />
+    <Compile Include="Formatting\XmlMediaTypeFormatter.cs" />
+    <Compile Include="GlobalConfiguration.cs" />
+    <Compile Include="HttpHelper.cs" />
+    <Compile Include="HttpMethods.cs" />
+    <Compile Include="HttpRequestBaseExtensions.cs" />
+    <Compile Include="Http\DictionaryAdapterCollection.cs" />
+    <Compile Include="Http\HttpExtensions.cs" />
+    <Compile Include="Http\HttpMethod.cs" />
+    <Compile Include="Http\HttpMethodHelper.cs" />
+    <Compile Include="Http\HttpParseResult.cs" />
+    <Compile Include="Http\HttpRequestMessage.cs" />
+    <Compile Include="Http\HttpResponseMessage%271.cs" />
+    <Compile Include="Http\HttpResponseMessage.cs" />
+    <Compile Include="Http\HttpRuleParser.cs" />
+    <Compile Include="Http\HttpStatusDescription.cs" />
+    <None Include="Http\MediaTypeHeaderValue.cs1" />
+    <Compile Include="Http\MediaTypeHeaderValueCollection.cs" />
+    <Compile Include="Http\MediaTypeHeaderValueEqualityComparer.cs" />
+    <None Include="Http\MediaTypeWithQualityHeaderValue.cs1" />
+    <Compile Include="Formatting\MediaTypeWithQualityHeaderValueComparer.cs" />
+    <None Include="Http\NameValueHeaderValue.cs1" />
+    <Compile Include="Http\ParsedMediaTypeHeaderValue.cs" />
+    <Compile Include="IActionSelector.cs" />
+    <Compile Include="Infrastructure\ControllerDescriptorCache.cs" />
+    <Compile Include="Infrastructure\ReaderWriterCache.cs" />
+    <Compile Include="Infrastructure\ReflectedAttributeCache.cs" />
+    <Compile Include="ObjectContent%271.cs" />
+    <Compile Include="ObjectContent.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QueryableFilterAttribute.cs" />
+    <Compile Include="QueryableFilterProvider.cs" />
+    <Compile Include="Query\DefaultStructuredQueryBuilder.cs" />
+    <Compile Include="Query\IStructuredQueryBuilder.cs" />
+    <Compile Include="Query\DefaultStructuredQuerySource.cs" />
+    <Compile Include="Query\DynamicExpression.cs" />
+    <Compile Include="Query\DynamicOrdering.cs" />
+    <Compile Include="Query\DynamicQueryable.cs" />
+    <Compile Include="Query\ExpressionParser.cs" />
+    <Compile Include="Query\IStructuredQuerySource.cs" />
+    <Compile Include="Query\IStructuredQueryPart.cs" />
+    <Compile Include="Query\IStructureQueryTransform.cs" />
+    <Compile Include="Query\ODataQueryDeserializer.cs" />
+    <Compile Include="Query\ParseException.cs" />
+    <Compile Include="Query\QueryComposer.cs" />
+    <Compile Include="Query\QueryResolver.cs" />
+    <Compile Include="Query\QueryTypeHelper.cs" />
+    <Compile Include="Query\QueryValidator.cs" />
+    <Compile Include="Query\StructuredQueryPart.cs" />
+    <Compile Include="Query\StructuredQuery.cs" />
+    <Compile Include="Query\TypeHelper.cs" />
+    <Compile Include="Query\UriQueryUtility.cs" />
+    <Compile Include="ReflectedActionDescriptoExtensions.cs" />
+    <Compile Include="RequestContextExtensions.cs" />
+    <Compile Include="Properties\SR.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SR.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\SRResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SRResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SafeViewResult.cs" />
+    <Compile Include="ServicesExtensions.cs" />
+    <Compile Include="Services\DefaultServices.cs" />
+    <Compile Include="Services\ServicesContainer.cs" />
+    <Compile Include="TypeHelper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\SR.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>SR.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\SRResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>SRResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,142 @@
+﻿namespace MvcApi.Http
+{
+    #region Using Directives
+    using System;
+    using System.Collections.Generic;
+    using System.Net.Mime;
+    using System.Text;
+    #endregion
+
+    public class MediaTypeHeaderValue : ICloneable
+    {
+        private ContentType contentType;
+        private DictionaryAdapterCollection parameters;
+
+        #region Constructors
+
+        public MediaTypeHeaderValue(string mediaType)
+            : this(new ContentType())
+        {
+            this.MediaType = mediaType;
+        }
+
+        protected MediaTypeHeaderValue(MediaTypeHeaderValue source)
+            :this(new ContentType())
+        {
+            this.MediaType = source.MediaType;
+            if (source.Parameters != null)
+            {
+                foreach (var entry in source.Parameters)
+                {
+                    this.Parameters.Add(entry);
+                }
+            }
+        }
+
+        internal MediaTypeHeaderValue()
+            : this(new ContentType())
+        {
+        }
+
+        internal MediaTypeHeaderValue(ContentType contentType)
+        {
+            this.contentType = contentType;
+        }
+
+        #endregion
+
+        #region Properties
+
+        public string CharSet
+        {
+            get { return this.contentType.CharSet; }
+            set { this.contentType.CharSet = value; }
+        }
+
+        public string MediaType
+        {
+            get { return this.contentType.MediaType; }
+            set { this.contentType.MediaType = value; }
+        }
+
+        public string Name
+        {
+            get { return this.contentType.Name; }
+            set { this.contentType.Name = value; }
+        }
+
+        public ICollection<NameValueHeaderValue> Parameters
+        {
+            get
+            {
+                if (this.parameters == null)
+                {
+                    this.parameters = new DictionaryAdapterCollection(this.contentType.Parameters);
+                }
+                return this.parameters;
+            }
+        }
+
+        #endregion
+
+        object ICloneable.Clone()
+        {
+            return new MediaTypeHeaderValue(this);
+        }
+
+        public override string ToString()
+        {
+            return this.contentType.ToString();
+        }
+
+        public static MediaTypeHeaderValue Parse(string input)
+        {
+            return new MediaTypeWithQualityHeaderValue(new ContentType(input));
+        }
+
+        public static bool TryParse(string input, out MediaTypeHeaderValue parsedValue)
+        {
+            parsedValue = null;
+            ContentType contentType;
+            if (TryParseContentType(input, out contentType))
+            {
+                parsedValue = new MediaTypeHeaderValue(contentType);
+                return true;
+            }
+            return false;
+        }
+
+        internal static bool TryParseContentType(string input, out ContentType contentType)
+        {
+            contentType = null;
+            try
+            {
+                contentType = new ContentType(input);
+            }
+            catch (FormatException)
+            {
+                //// This may be a friendly name (for example, "xml" instead of "text/xml").
+                //// if so, try mapping to a content type
+                //if (!FormatManager.Current.TryMapFormatFriendlyName(input, out contentType))
+                //{
+                //    return false;
+                //}
+                return false;
+            }
+            Encoding encoding = Encoding.UTF8;
+            if (!string.IsNullOrEmpty(contentType.CharSet))
+            {
+                try
+                {
+                    encoding = Encoding.GetEncoding(contentType.CharSet);
+                }
+                catch (ArgumentException)
+                {
+                    return false;
+                }
+            }
+            contentType.CharSet = encoding.HeaderName;
+            return true;
+        }
+    }
+}

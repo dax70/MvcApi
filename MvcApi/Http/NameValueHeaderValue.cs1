@@ -1,0 +1,113 @@
+﻿namespace MvcApi.Http
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Diagnostics.Contracts;
+
+    public class NameValueHeaderValue : ICloneable
+    {
+        private string name;
+        private string value;
+
+        #region Constructors
+
+        public NameValueHeaderValue(string name)
+            : this(name, null)
+        {
+        }
+
+        public NameValueHeaderValue(string name, string value)
+        {
+            this.name = name;
+            this.value = value;
+        }
+
+        protected NameValueHeaderValue(NameValueHeaderValue source)
+        {
+            this.name = source.name;
+            this.value = source.value;
+        }
+
+        internal NameValueHeaderValue()
+        {
+        } 
+        #endregion
+
+        #region Properties
+
+        public string Name { get { return this.name; } }
+
+        public string Value
+        {
+            get { return this.value; }
+            set { this.value = value; }
+        } 
+        #endregion
+
+        object ICloneable.Clone()
+        {
+            return new NameValueHeaderValue(this);
+        }
+
+        public override bool Equals(object obj)
+        {
+            NameValueHeaderValue value2 = obj as NameValueHeaderValue;
+            if (value2 == null)
+            {
+                return false;
+            }
+            if (string.Compare(this.name, value2.name, StringComparison.OrdinalIgnoreCase) != 0)
+            {
+                return false;
+            }
+            if (string.IsNullOrEmpty(this.value))
+            {
+                return string.IsNullOrEmpty(value2.value);
+            }
+            if (this.value[0] == '"')
+            {
+                return (string.CompareOrdinal(this.value, value2.value) == 0);
+            }
+            return (string.Compare(this.value, value2.value, StringComparison.OrdinalIgnoreCase) == 0);
+        }
+
+        public override int GetHashCode()
+        {
+            Contract.Assert(this.name != null);
+            int hashCode = this.name.ToLowerInvariant().GetHashCode();
+            if (!string.IsNullOrEmpty(this.value))
+            {
+                if (this.value[0] == '"')
+                {
+                    return (hashCode ^ this.value.GetHashCode());
+                }
+                return (hashCode ^ this.value.ToLowerInvariant().GetHashCode());
+            }
+            return hashCode;
+        }
+
+        public override string ToString()
+        {
+            if (!string.IsNullOrEmpty(this.value))
+            {
+                return (this.name + "=" + this.value);
+            }
+            return this.name;
+        }
+
+        internal static NameValueHeaderValue Find(ICollection<NameValueHeaderValue> values, string name)
+        {
+            if ((values != null) && (values.Count != 0))
+            {
+                foreach (NameValueHeaderValue value in values)
+                {
+                    if (string.Compare(value.Name, name, StringComparison.OrdinalIgnoreCase) == 0)
+                    {
+                        return value;
+                    }
+                }
+            }
+            return null;
+        }
+    }
+}

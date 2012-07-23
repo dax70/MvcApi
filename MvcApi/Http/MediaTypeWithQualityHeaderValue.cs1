@@ -1,0 +1,67 @@
+namespace MvcApi.Http
+{
+    using System;
+    using System.Net.Mime;
+
+    /// <summary>Represents a content-type header value with an additional quality.</summary>
+    public sealed class MediaTypeWithQualityHeaderValue : MediaTypeHeaderValue, ICloneable
+    {
+        #region Constructors
+        internal MediaTypeWithQualityHeaderValue()
+        {
+        }
+
+        private MediaTypeWithQualityHeaderValue(MediaTypeWithQualityHeaderValue source)
+            : base(source)
+        {
+        }
+
+        public MediaTypeWithQualityHeaderValue(string mediaType)
+            : base(mediaType)
+        {
+        }
+
+        public MediaTypeWithQualityHeaderValue(string mediaType, double quality)
+            : base(mediaType)
+        {
+            this.Quality = new double?(quality);
+        }
+
+        internal MediaTypeWithQualityHeaderValue(ContentType contentType)
+            : base(contentType)
+        {
+        } 
+        #endregion
+
+        public double? Quality
+        {
+            get { return HeaderUtilities.GetQuality(base.Parameters); }
+            set { HeaderUtilities.SetQuality(base.Parameters, value); }
+        }
+
+        object ICloneable.Clone()
+        {
+            return new MediaTypeWithQualityHeaderValue(this);
+        }
+
+        // Calling code here could cast from base class.
+        //public static MediaTypeWithQualityHeaderValue Parse(string input)
+        //{
+        //    return new MediaTypeWithQualityHeaderValue(new ContentType(input));
+        //}
+
+        public static bool TryParse(string input, out MediaTypeWithQualityHeaderValue parsedValue)
+        {
+            parsedValue = null;
+            ContentType contentType;
+            if (TryParseContentType(input, out contentType))
+            {
+                parsedValue = new MediaTypeWithQualityHeaderValue(contentType);
+                return true;
+            }
+            return false;
+        }
+
+    }
+}
+
