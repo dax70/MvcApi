@@ -21,13 +21,16 @@ Liberate yourself to return *Objects* instead of **ActionResult** thru the magic
 If however your use needs to explicitly return an ActionResult, your free to do so, still works. The current Content Negotiation supports: Html, Json and Xml.
 
 ### Queries
-If you happen to return an **IQueryable**, the client can further filter it using ![OData](http://www.odata.org/) filters. This is based on the Web API filters that were pulled out of the RC.
+If you happen to return an **IQueryable**, the client can further filter it using [OData](http://www.odata.org/) filters. This is based on the Web API filters that were pulled out of the RC.
 
 ### Actions
 By default Actions get mapped to the HttpVerb, which frees yourself from always specifying actions in routes.
 Ex: 
 * /customers will resolve to the IQueryable 
 * /customers/1 will resolve to the Single.
+
+Basic Usage
+-----------
 
     // ApiController inherits from Controller, but overrides certain things mainly the ControllerDispatcher.
     public ProductsController: ApiController
