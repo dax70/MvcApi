@@ -1,12 +1,11 @@
 MVC API
-=======
+-------
 
 MVC API is a Web Api framework built on top ASP.NET MVC.
---------------------------------------------------------
 
 It is nearly identical to ASP.NET Web API, infact it strives to be so. 
 
-## Why another API framework for ASP.NET?
+Why another API framework for ASP.NET?
 -----------------------------------------
 
 The major difference is that existing projects have Controllers, Views, ActionFilters and other dependencies on MVC. 
