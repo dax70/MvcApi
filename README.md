@@ -10,10 +10,10 @@ Features
 ### Queries
 Return **IQueryable** from your action and use [OData](http://www.odata.org/) operators to further filter your queries.
 
-Ordering
+####Ordering
 http://localhost:port/products?$orderby=price 
     // query.OrderBy(p => p.Price);
-Filtering
+####Filtering
 http://localhost/products?$filter=price gt 20
     //query.Where(p => p.Price > 20);
 
@@ -75,7 +75,7 @@ Basic Usage
         public int  Delete(int id) { // etc }
     }
 
-The views are matched based on naming just like any MVC controller, in fact it's all MVC under the covers just extending the core framework at existing extensibility points so that it aligns almost 100% with Web API functionality, but reuses existing investments/code that is already on MVC.
+The views are matched based on the Action name just like any MVC controller, in fact it's all MVC under the covers just extending the core framework at existing extensibility points so that it aligns almost 100% with Web API functionality, but reuses existing investments/code that is already on MVC.
 
 It doesnt matter how these are produced, ie javascript of anchor tag, it's a URI to the server, which gets translated into the proper Linq Orderby, Where, GroupBy, etc. And of course these can be combined, composing complex queries.
 
