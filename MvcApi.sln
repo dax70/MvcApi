@@ -5,6 +5,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcApi", "MvcApi\MvcApi.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcApi.Test", "MvcApi.Test\MvcApi.Test.csproj", "{436C3EF9-431F-4660-A3DC-AC2EC66D12B5}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{3C33D407-B028-4222-8510-B94B36ED4975}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcApi.Movies", "Samples\MvcApi.Movies\MvcApi.Movies.csproj", "{B4C5DEE6-4CA7-412E-B166-DB34D395B662}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,8 +23,15 @@ Global
 		{436C3EF9-431F-4660-A3DC-AC2EC66D12B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{436C3EF9-431F-4660-A3DC-AC2EC66D12B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{436C3EF9-431F-4660-A3DC-AC2EC66D12B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B4C5DEE6-4CA7-412E-B166-DB34D395B662}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4C5DEE6-4CA7-412E-B166-DB34D395B662}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4C5DEE6-4CA7-412E-B166-DB34D395B662}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4C5DEE6-4CA7-412E-B166-DB34D395B662}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B4C5DEE6-4CA7-412E-B166-DB34D395B662} = {3C33D407-B028-4222-8510-B94B36ED4975}
 	EndGlobalSection
 EndGlobal
