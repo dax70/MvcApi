@@ -10,10 +10,12 @@ Features
 ### Queries
 Return **IQueryable** from your action and use [OData](http://www.odata.org/) operators to further filter your queries.
 
+Ordering
 http://localhost:port/products?$orderby=price 
-which would roughly produce //query.OrderBy(p => p.Price);
+    // query.OrderBy(p => p.Price);
+Filtering
 http://localhost/products?$filter=price gt 20
-Roughly translates into //query.Where(p => p.Price > 20);
+    //query.Where(p => p.Price > 20);
 
 This is similar to the Web API OData filters that were pulled out of the RC.
 
