@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using MvcApi.Movies.Models;
 #endregion
 
 namespace MvcApi.Movies.Controllers

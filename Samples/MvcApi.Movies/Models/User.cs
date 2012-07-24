@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Runtime.Serialization;
 
-namespace MvcApi.Movies.Controllers
+namespace MvcApi.Movies.Models
 {
     //[DataContract]
     public class User
