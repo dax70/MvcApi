@@ -13,11 +13,11 @@ Return **IQueryable** from your action and use [OData](http://www.odata.org/) op
 **Ex:** 
 http://localhost:port/products?$orderby=price 
 
-becomes -> query.OrderBy(p => p.Price);
+query.OrderBy(p => p.Price); // Equivalent C#
 
 http://localhost/products?$filter=price gt 20
 
-becomes -> query.Where(p => p.Price > 20);
+query.Where(p => p.Price > 20); // Equivalent C#
 
 Whether these queries were produced via javascript, or found in an anchor tag, it's a URI to the server, which gets translated into the proper Linq Where, Orderby, GroupBy, etc. And of course these can be combined, to compose complex queries.
 This is similar to the Web API OData filters that were pulled out of the RC.
