@@ -18,7 +18,7 @@ Well if that sounds like the world you live in, then MvcApi might be for you.
 
 It handles all those details, yet let's you override and configure them when you need to.
 
-Best of all your current app, ActionFilters, **it all works**.
+Best of all your current App, Controllers, Views, ActionFilters, **they all works**.
 
 Basic Usage
 -----------
