@@ -3,8 +3,61 @@ MVC API
 
 MVC API is a Web Api framework built on top ASP.NET MVC.
 
-It is nearly identical to ASP.NET Web API, infact it strives to be so. 
+MVC API is not just for exposing API's, the fact is your app is the API.
+Whether you have an existing MVC app or are building one, at some point you'll add AJAX to your Views. 
+Perhaps you also want to create an API for others to consume (Internal or External apps) eventually.
 
+Once you do, you'll have to do all sorts of Request checking to figure out whether it was an AJAX request. 
+This leads to potentially duplicating Controllers and or Actions. 
+Things get much much worse, since sometimes it's easier to return Partials, and yet sometimes you want to work with JSON.
+* It would be nice if a Framework could figure this out, based on what the AJAX Client requested.
+* It would also be nice if Regular Views (Razor or otherwise) just worked with the same Actions without
+having to special case and code all these details again and again.
+
+Well if that sounds like the world you live in, then MvcApi might be for you. 
+
+It handles all those details, yet let's you override and configure them when you need to.
+Best of all your current app, ActionFilters, **it all works**.
+
+Basic Usage
+-----------
+
+    // ApiController inherits from Controller, but overrides certain things mainly the ControllerDispatcher.
+    public ProductsController: ApiController
+    {
+        var db ... // Some EF boilerplate code.
+        public IQueryable<Product> Get()
+        {
+            return dbContext.Products; 
+        }
+        
+        public Product Get(int id)
+        {
+            return dbProducts.Where(p => p.Id == id).Single();    
+        }
+        
+        [HttpPost] / * Optional since naming convention assumes post */
+        public Product Post(Product product)
+        {
+            db.Products.AddObject(product);	
+            db.SaveChanges();
+            return product; // Echo object with populated Id.
+        }
+        
+        [HttpPut] / * Optional */
+        public Product Put(Product product)
+        {
+            db.Products.Attach(product);
+            db.ObjectStateManager.ChangeObjectState(product, EntityState.Modified);
+            db.SaveChanges();
+        }
+        
+        [HttpDelete / * Optional */
+        public int  Delete(int id) { // etc }
+    }
+
+** Dont want to return your objects. No problem return an ActionResult (ViewResult, JsonResult, etc) and everything still works **
+    
 Features
 --------
 ### Queries
@@ -34,42 +87,6 @@ If however your use needs to explicitly return an ActionResult, your free to do 
 Content negotiation works by letting the client request the format. The browser's default request format is text/html, but an ajax client could request application/json. 
 In the sample below both work just fine, since it's returning objects, the framework figures out how to format (serialize) the response.
 
-Basic Usage
------------
-
-    // ApiController inherits from Controller, but overrides certain things mainly the ControllerDispatcher.
-    public ProductsController: ApiController
-    {
-        var db ... // Some EF boilerplate code.
-        public IQueryable<Product> Get()
-        {
-            return dbContext.Products; 
-        }
-        
-        public Product Get(int id)
-        {
-            return dbProducts.Where(p => p.Id == id).Single();	
-        }
-        
-        [HttpPost] / * Optional since naming convention assumes post */
-        public Product Post(Product product)
-        {
-            db.Products.AddObject(product);	
-            db.SaveChanges();
-            return product; // Echo object with populated Id.
-        }
-        
-        [HttpPut] / * Optional */
-        public Product Put(Product product)
-        {
-            db.Products.Attach(product);
-            db.ObjectStateManager.ChangeObjectState(product, EntityState.Modified);
-            db.SaveChanges();
-        }
-        
-        [HttpDelete / * Optional */
-        public int  Delete(int id) { // etc }
-    }
 Views
 -----
 The views are matched based on the Action name just like any MVC controller, in fact it's all MVC under the covers just extending the core framework at existing extensibility points so that it aligns almost 100% with Web API functionality, but reuses existing investments/code that is already on MVC.
