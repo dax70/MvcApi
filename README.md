@@ -8,15 +8,16 @@ Whether you have an existing MVC app or are building one, at some point you'll a
 Perhaps you also want to create an API for others to consume (Internal or External apps) eventually.
 
 Once you do, you'll have to do all sorts of Request checking to figure out whether it was an AJAX request. 
-This leads to potentially duplicating Controllers and or Actions. 
-Things get much much worse, since sometimes it's easier to return Partials, and yet sometimes you want to work with JSON.
-* It would be nice if a Framework could figure this out, based on what the AJAX Client requested.
+This leads to potentially duplicating **Controllers and or Actions**. 
+Things get much worse, since sometimes it's easier to return Partials, and yet sometimes you want to work with JSON.
+* It would be nice if a Framework could figure this out, based on what the Client requested, AJAX or otherwise.
 * It would also be nice if Regular Views (Razor or otherwise) just worked with the same Actions without
 having to special case and code all these details again and again.
 
 Well if that sounds like the world you live in, then MvcApi might be for you. 
 
 It handles all those details, yet let's you override and configure them when you need to.
+
 Best of all your current app, ActionFilters, **it all works**.
 
 Basic Usage
