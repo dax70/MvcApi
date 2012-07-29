@@ -1,16 +1,15 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using System.Web.Mvc;
 using MvcApi.Properties;
 
 namespace MvcApi
 {
     // This is common to both per-controller and global config. 
     // It facilitates sharing all the mutation operations between them.
-    public abstract class ServicesContainer : IDisposable
+    public abstract class ServicesContainer : IDependencyResolver, IDisposable
     {
         public abstract object GetService(Type serviceType);
         public abstract IEnumerable<object> GetServices(Type serviceType);

@@ -41,7 +41,7 @@ namespace MvcApi.Services
         private readonly ReaderWriterLockSlim _cacheLock = new ReaderWriterLockSlim();
         private readonly Dictionary<Type, object[]> _cacheMulti = new Dictionary<Type, object[]>();
         private readonly Dictionary<Type, object> _cacheSingle = new Dictionary<Type, object>();
-        private readonly ApiConfiguration _configuration;
+        private readonly Configuration _configuration;
 
         // Mutation operations delegate (throw if applied to wrong set)
         private readonly Dictionary<Type, object> _defaultServicesSingle = new Dictionary<Type, object>();
@@ -60,7 +60,7 @@ namespace MvcApi.Services
 
         [SuppressMessage("Microsoft.Maintainability", "CA1506:AvoidExcessiveClassCoupling", Justification = "Class needs references to large number of types.")]
         [SuppressMessage("Microsoft.Reliability", "CA2000:Dispose objects before losing scope", Justification = "We're registering the ValidationCache to be disposed by the HttpConfiguration.")]
-        public DefaultServices(ApiConfiguration configuration)
+        public DefaultServices(Configuration configuration)
         {
             if (configuration == null)
             {

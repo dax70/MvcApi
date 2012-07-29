@@ -1,40 +1,35 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
-using MvcApi.Dependencies;
 using MvcApi.Formatting;
 using MvcApi.Services;
 
 namespace MvcApi
 {
-    public class ApiConfiguration: IDisposable
+    public class Configuration : IDisposable
     {
-        private IDependencyResolver _dependencyResolver = EmptyResolver.Instance;
-        private readonly MediaTypeFormatterCollection _formatters = ApiConfiguration.DefaultFormatters();
+        private IDependencyResolver _dependencyResolver;
+        private readonly MediaTypeFormatterCollection _formatters = Configuration.DefaultFormatters();
         private List<IDisposable> _resourcesToDispose = new List<IDisposable>();
         private bool _disposed;
 
-        public ApiConfiguration()
+        public Configuration()
         {
             Services = new DefaultServices(this);
         }
 
         public IDependencyResolver DependencyResolver
         {
-            get
-            {
-                return this._dependencyResolver;
-            }
+            get { return _dependencyResolver; }
             set
             {
                 if (value == null)
                 {
                     throw Error.PropertyNull();
                 }
-                this._dependencyResolver = value;
+                _dependencyResolver = value;
             }
         }
-
 
         public MediaTypeFormatterCollection Formatters
         {

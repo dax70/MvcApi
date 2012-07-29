@@ -8,13 +8,13 @@
 
     public class ApiController : Controller
     {
-        private ApiConfiguration configuration;
+        private Configuration configuration;
 
         public ApiController()
         {
         }
 
-        protected ApiConfiguration Configuration
+        protected Configuration Configuration
         {
             get
             {

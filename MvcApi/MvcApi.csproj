@@ -64,12 +64,13 @@
     <Compile Include="ActionType.cs" />
     <Compile Include="ApiActionDescriptor.cs" />
     <Compile Include="ApiControllerActionInvoker.cs" />
-    <Compile Include="ApiConfiguration.cs" />
+    <Compile Include="Configuration.cs" />
     <Compile Include="ApiController.cs" />
     <Compile Include="ApiControllerActionSelector.cs" />
     <Compile Include="ApiControllerActionSelector_old.cs" />
     <Compile Include="ApiControllerDescriptor.cs" />
-    <Compile Include="ApiRedirectToRouteResult.cs" />
+    <Compile Include="IRegisterDependency.cs" />
+    <Compile Include="RedirectToRouteResult.cs" />
     <Compile Include="Async\AsyncDelegates.cs" />
     <Compile Include="Async\AsyncResultWrapper.cs" />
     <Compile Include="Async\AsyncVoid.cs" />

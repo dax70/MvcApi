@@ -42,7 +42,7 @@ namespace MvcApi
 
         /// <summary>
         /// The <see cref="IStructuredQuerySource"/> to use. Derived classes can use this to have a per-attribute query factory 
-        /// instead of the one on <see cref="ApiConfiguration"/>
+        /// instead of the one on <see cref="Configuration"/>
         /// </summary>
         protected IStructuredQuerySource StructuredQuerySource
         {
@@ -52,7 +52,7 @@ namespace MvcApi
 
         /// <summary>
         /// The <see cref="IStructuredQueryBuilder"/> to use. Derived classes can use this to have a per-attribute query builder 
-        /// instead of the one on <see cref="ApiConfiguration"/>
+        /// instead of the one on <see cref="Configuration"/>
         /// </summary>
         protected IStructuredQueryBuilder StructuredQueryBuilder
         {
@@ -133,7 +133,7 @@ namespace MvcApi
             }
             else
             {
-                ApiConfiguration configuration = GlobalConfiguration.Configuration; 
+                Configuration configuration = GlobalConfiguration.Configuration; 
                 if (configuration != null)
                 {
                     queryBuilder = configuration.Services.GetStructuredQueryBuilder();
@@ -173,7 +173,7 @@ namespace MvcApi
             }
             else
             {
-                ApiConfiguration configuration = GlobalConfiguration.Configuration; //request.GetConfiguration();
+                Configuration configuration = GlobalConfiguration.Configuration; //request.GetConfiguration();
                 if (configuration != null)
                 {
                     queryFactory = configuration.Services.GetStructuredQueryFactory();

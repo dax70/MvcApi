@@ -1,18 +1,18 @@
 ﻿using System;
+using System.Web.Mvc;
+using MvcApi.Services;
 
 namespace MvcApi
 {
     public static class GlobalConfiguration
     {
-
-        private static Lazy<ApiConfiguration> _configuration = new Lazy<ApiConfiguration>(
+        private static Lazy<Configuration> _configuration = new Lazy<Configuration>(
         () =>
         {
-            // TODO: could add more initialization.
-            return new ApiConfiguration();
+            return new Configuration();
         });
 
-        public static ApiConfiguration Configuration
+        public static Configuration Configuration
         {
             get { return _configuration.Value; }
         }
