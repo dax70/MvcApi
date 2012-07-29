@@ -25,6 +25,8 @@
         {
         }
 
+        public bool InlineCount { get; set; }
+
         protected override IQueryable ApplyResultLimit(ActionExecutedContext actionExecutedContext, IQueryable query)
         {
             if (actionExecutedContext == null)
@@ -35,7 +37,7 @@
             {
                 throw Error.ArgumentNull("query");
             }
-            bool inlineCountRequested = ShouldInlineCount(actionExecutedContext.HttpContext.Request);
+            bool inlineCountRequested = InlineCount || ShouldInlineCount(actionExecutedContext.HttpContext.Request);
 
             ActionResult result = actionExecutedContext.Result;
             if (result != null && inlineCountRequested && query != null)
@@ -64,7 +66,8 @@
             Expression countExpr = null;
 
             // TODO what if the paging does not follow the exact Skip().Take() pattern?
-            if (IsSequenceOperator("take", mce))
+            // Check for skip incase Take is applied as a Limit.
+            if (IsSequenceOperator("take", mce) || IsSequenceOperator("skip", mce)) 
             {
                 // strip off the Take operator
                 countExpr = mce.Arguments[0];
