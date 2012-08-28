@@ -102,8 +102,8 @@ Additionally, Web API has the concept of MediaTypeFormatters, but does not have 
 If you need Razor views that work with models, without making everything go thru an ajax call to render UI then MVC API might be for you.
 
 #### Additional Resources
-* Paul Stovell- Some thoughts on ASP.NET MVC and WebAPI in 4.0 [One (more) ASP.NET] (http://www.paulstovell.com/one-more-aspnet)
-* Hadi Hariri - With HTTP, your application is your API [With Web API, we hear that Web API is for API’s and MVC is for UI] (http://hadihariri.com/2012/04/06/with-http-your-application-is-your-api/)
+* __Paul Stovell__- [One (more) ASP.NET] (http://www.paulstovell.com/one-more-aspnet) - Some thoughts on ASP.NET MVC and WebAPI in 4.0 
+* __Hadi Hariri__ - [With HTTP, your application is your API] (http://hadihariri.com/2012/04/06/with-http-your-application-is-your-api/) - With Web API, we hear that Web API is for API’s and MVC is for UI
 
 ## License
 [MIT License](https://github.com/dax70/MvcApi/blob/master/LICENSE.md)
