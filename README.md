@@ -101,6 +101,5 @@ Rewritting these or migrating them to the similar Web API is not feasible for ma
 Additionally, Web API has the concept of MediaTypeFormatters, but does not have a proper HTML one. 
 If you need Razor views that work with models, without making everything go thru an ajax call to render UI then MVC API might be for you.
 
-##License
-## LICENSE
+## License
 [MIT License](https://github.com/dax70/MvcApi/blob/master/LICENSE.md)
