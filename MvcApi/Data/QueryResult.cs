@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections;
+    using System.Linq;
     using System.Runtime.Serialization;
 
     /// <summary>
@@ -29,5 +30,10 @@
         /// </summary>
         [DataMember]
         public int TotalCount { get; set; }
+
+        public static QueryResult EmptyResult()
+        {
+            return new QueryResult(new object[0], 0);
+        }
     }
 }

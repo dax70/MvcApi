@@ -183,7 +183,6 @@ namespace MvcApi
             queryFactory = queryFactory ?? _defaultQueryFactory;
             return queryFactory.CreateQuery(request.Url);
         }
-
     }
 }
 
