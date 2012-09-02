@@ -194,6 +194,7 @@
     <EmbeddedResource Include="Properties\SRResources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>SRResources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

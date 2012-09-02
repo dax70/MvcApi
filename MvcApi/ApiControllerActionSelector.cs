@@ -25,7 +25,7 @@
             private const string ControllerRouteKey = "controller";
 
             private readonly ApiActionDescriptor[] _actionDescriptors;
-            private readonly IDictionary<MethodInfo, IEnumerable<string>> _actionParameterNames;
+            private readonly IDictionary<MethodInfo, string[]> _actionParameterNames;
             private readonly ApiActionDescriptor[] _aliasedMethods;
             private readonly string[] _cacheListVerbKinds;
             private readonly ApiActionDescriptor[][] _cacheListVerbs;
@@ -35,7 +35,7 @@
 
             public ActionSelectorCacheItem(ControllerDescriptor controllerDescriptor)
             {
-                this._actionParameterNames = new Dictionary<MethodInfo, IEnumerable<string>>();
+                this._actionParameterNames = new Dictionary<MethodInfo, string[]>();
                 this._cacheListVerbKinds = new string[] { HttpMethods.Get, HttpMethods.Put, HttpMethods.Post };
                 this._controllerDescriptor = controllerDescriptor;
                 ActionDescriptor[] array = controllerDescriptor.GetCanonicalActions();
@@ -52,7 +52,7 @@
                         action.MethodInfo,
                         action.MethodInfo.GetParameters()
                             .Where(binding => TypeHelper.IsSimpleType(binding.ParameterType) && !binding.IsOptional)
-                            .Select(binding => binding.Name));
+                            .Select(binding => binding.Name).ToArray());
                 }
                 this._aliasedMethods = Array.FindAll<ApiActionDescriptor>(this._actionDescriptors, new Predicate<ApiActionDescriptor>(ApiControllerActionSelector.ActionSelectorCacheItem.IsMethodDecoratedWithAliasingAttribute));
                 this._nonAliasedMethods = this._actionDescriptors.Except<ApiActionDescriptor>(this._aliasedMethods).ToLookup<ApiActionDescriptor, string>(actionDesc => actionDesc.MethodInfo.Name, StringComparer.OrdinalIgnoreCase);
@@ -100,18 +100,27 @@
                 {
                     descriptors = this.FindActionUsingRouteAndQueryParameters(controllerContext, descriptors).ToArray<ApiActionDescriptor>();
                 }
+                if (descriptors.Count > 1)
+                {
+                    // if multiple matches still try to narrow by ActionResult.
+                    descriptors = FilterActionResult(descriptors);
+                }
                 // Already done in RemoveIncompatible.
                 //is2 = RunSelectionFilters(controllerContext, is2);
                 switch (descriptors.Count)
                 {
                     case 0:
                         throw new HttpException((int)HttpStatusCode.NotFound, Error.Format(SRResources.ApiControllerActionSelector_ActionNotFound, this._controllerDescriptor.ControllerName));
-
                     case 1:
                         return descriptors.First();
                 }
                 string message = CreateAmbiguousMatchList(descriptors);
                 throw new HttpException((int)HttpStatusCode.InternalServerError, string.Format(CultureInfo.CurrentCulture, SRResources.ActionMethodSelector_AmbiguousMatch, message));
+            }
+
+            private ApiActionDescriptor[] FilterActionResult(ICollection<ApiActionDescriptor> descriptors)
+            {
+                return descriptors.Where(descriptor => descriptor.ReturnType != typeof(ActionResult)).ToArray();
             }
 
             private ApiActionDescriptor[] FindActionsForVerb(string verb, ControllerContext controllerContext)
@@ -144,7 +153,7 @@
 
             private IEnumerable<ApiActionDescriptor> FindActionUsingRouteAndQueryParameters(ControllerContext controllerContext, IEnumerable<ApiActionDescriptor> actionsFound)
             {
-                // TODO, DevDiv 320655, improve performance of this method.
+                // TODO improve performance of this method.
                 IDictionary<string, object> routeValues = controllerContext.RouteData.Values;
                 IEnumerable<string> routeParameterNames = routeValues.Select(route => route.Key)
                     .Where(key =>
@@ -185,62 +194,11 @@
                 else
                 {
                     // return actions with no parameters
-                    actionsFound = actionsFound.Where(descriptor => !_actionParameterNames[descriptor.MethodInfo].Any());
+                    actionsFound = actionsFound.Where(descriptor => _actionParameterNames[descriptor.MethodInfo].Length == 0);
                 }
 
                 return actionsFound;
             }
-
-            //private IEnumerable<ApiActionDescriptor> FindActionUsingRouteAndQueryParameters(ControllerContext controllerContext, IEnumerable<ApiActionDescriptor> actionsFound)
-            //{
-            //    Func<ApiActionDescriptor, bool> filterByRoute = null;
-            //    Func<ApiActionDescriptor, int> keySelector = null;
-            //    Func<ApiActionDescriptor, bool> filterByParameters = null;
-            //    IDictionary<string, object> values = controllerContext.RouteData.Values;
-            //    IEnumerable<string> routeParameterNames = from route in values
-            //                                              select route.Key into key
-            //                                              where !string.Equals(key, "controller", StringComparison.OrdinalIgnoreCase) && !string.Equals(key, "action", StringComparison.OrdinalIgnoreCase)
-            //                                              select key;
-            //    IEnumerable<string> allKeys = controllerContext.RequestContext.QueryString().AllKeys;
-            //    bool hasRouteParams = routeParameterNames.Any<string>();
-            //    bool hasQueryString = allKeys.Any<string>();
-            //    if (hasRouteParams || hasQueryString)
-            //    {
-            //        if (hasRouteParams && hasQueryString)
-            //        {
-            //            if (filterByRoute == null)
-            //            {
-            //                filterByRoute = descriptor => !routeParameterNames.Except<string>(this._actionParameterNames[descriptor.MethodInfo], StringComparer.OrdinalIgnoreCase).Any<string>();
-            //            }
-            //            actionsFound = actionsFound.Where(filterByRoute);
-            //        }
-            //        if (actionsFound.Count() > 1)
-            //        {
-            //            IEnumerable<string> combinedParameterNames = allKeys.Union<string>(routeParameterNames);
-            //            actionsFound = from descriptor in actionsFound
-            //                           where !this._actionParameterNames[descriptor.MethodInfo].Except<string>(combinedParameterNames, StringComparer.OrdinalIgnoreCase).Any<string>()
-            //                           select descriptor;
-            //            if (actionsFound.Count() <= 1)
-            //            {
-            //                return actionsFound;
-            //            }
-            //            if (keySelector == null)
-            //            {
-            //                keySelector = descriptor => this._actionParameterNames[descriptor.MethodInfo].Count<string>();
-            //            }
-            //            actionsFound = (from g in actionsFound.GroupBy<ApiActionDescriptor, int>(keySelector)
-            //                            orderby g.Key descending
-            //                            select g).First<IGrouping<int, ApiActionDescriptor>>();
-            //        }
-            //        return actionsFound;
-            //    }
-            //    if (filterByParameters == null)
-            //    {
-            //        filterByParameters = descriptor => !this._actionParameterNames[descriptor.MethodInfo].Any<string>();
-            //    }
-            //    actionsFound = actionsFound.Where(filterByParameters);
-            //    return actionsFound;
-            //}
 
             private IEnumerable<ApiActionDescriptor> GetMatchingAliasedMethods(ControllerContext controllerContext, string actionName)
             {
