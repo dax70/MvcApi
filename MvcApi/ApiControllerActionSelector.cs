@@ -125,6 +125,7 @@
 
             private ApiActionDescriptor[] FindActionsForVerb(string verb, ControllerContext controllerContext)
             {
+                // TODO: Consider if verb is GET allow without attribute or name beginning with get
                 bool supportedVerb = IsSupportedVerb(verb);
                 List<ApiActionDescriptor> list = new List<ApiActionDescriptor>();
                 Func<ActionMethodSelectorAttribute, bool> predicate = null;

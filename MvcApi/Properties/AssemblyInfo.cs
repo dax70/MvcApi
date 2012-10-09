@@ -6,9 +6,9 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("MvcApi")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("MVC API is a Web Api framework built on top ASP.NET MVC.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Eddy Recio")]
 [assembly: AssemblyProduct("MvcApi")]
 [assembly: AssemblyCopyright("Copyright ©  2012")]
 [assembly: AssemblyTrademark("")]
