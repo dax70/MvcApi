@@ -13,7 +13,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyCopyright("Copyright ©  2012")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
-[assembly: InternalsVisibleToAttribute("MvcApi.Test")]
+[assembly: InternalsVisibleToAttribute("MvcApi.Test, PublicKey=0024000004800000940000000602000000240000525341310004000001000100232911d319b98264c1eb0727854cddb916a5c5f3bad5f7cb32c0fdcb4e8e69ccc3f104ebf23416f1198d0598515cec1e9436905b4fa2d6cffb759992b49c41cb347f8fa6dc97c2df373bae640b46aad1f2259f4cee1d31756277d901db84ef804d2d905f4055baa105596defba0e860fe3d8bd975be6ca75da087ef4eb468396")]
+
+
 
 
 // Setting ComVisible to false makes the types in this assembly not visible 
@@ -34,5 +36,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: AssemblyVersion("1.0.1.1")]
+[assembly: AssemblyFileVersion("1.0.1.1")]

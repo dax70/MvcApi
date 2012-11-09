@@ -51,6 +51,5 @@ namespace MvcApi.Formatting
         {
             return type.GetCustomAttributes(typeof(JsonObjectAttribute), false).Any<object>();
         }
-
     }
 }

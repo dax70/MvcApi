@@ -33,6 +33,12 @@
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>..\MvcApiKey.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -132,6 +138,9 @@
     <Compile Include="Http\HttpResponseMessage.cs" />
     <Compile Include="Http\HttpRuleParser.cs" />
     <Compile Include="Http\HttpStatusDescription.cs" />
+    <None Include="..\MvcApiKey.pfx">
+      <Link>MvcApiKey.pfx</Link>
+    </None>
     <None Include="Http\MediaTypeHeaderValue.cs1" />
     <Compile Include="Http\MediaTypeHeaderValueCollection.cs" />
     <Compile Include="Http\MediaTypeHeaderValueEqualityComparer.cs" />

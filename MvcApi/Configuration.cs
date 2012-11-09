@@ -1,14 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Web.Mvc;
-using MvcApi.Formatting;
-using MvcApi.Services;
-
-namespace MvcApi
+﻿namespace MvcApi
 {
+    #region Using Directives
+    using System;
+    using System.Collections.Generic;
+    using System.Web.Mvc;
+    using MvcApi.Formatting;
+    using MvcApi.Services; 
+    #endregion
+
     public class Configuration : IDisposable
     {
-        private IDependencyResolver _dependencyResolver;
+        private IDependencyResolver _dependencyResolver = Configuration.DefaultResolver();
         private readonly MediaTypeFormatterCollection _formatters = Configuration.DefaultFormatters();
         private List<IDisposable> _resourcesToDispose = new List<IDisposable>();
         private bool _disposed;
@@ -87,6 +89,11 @@ namespace MvcApi
             {
                 //new JQueryMvcFormUrlEncodedFormatter()
             };
+        }
+
+        private static IDependencyResolver DefaultResolver()
+        {
+            return System.Web.Mvc.DependencyResolver.Current;
         }
     }
 }
