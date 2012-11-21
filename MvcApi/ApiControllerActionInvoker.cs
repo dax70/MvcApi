@@ -14,7 +14,7 @@
     using MvcApi.Http;
     #endregion
 
-    public class ApiControllerActionInvoker : AsyncControllerActionInvoker
+    public class ApiControllerActionInvoker : AsyncControllerActionInvoker, IApiAsyncActionInvoker
     {
         private ControllerDescriptorCache _instanceDescriptorCache;
 
@@ -41,7 +41,7 @@
         }
         #endregion
 
-        internal IAsyncResult BeginInvokeActionDescriptor(ControllerContext controllerContext, ActionDescriptor actionDescriptor, AsyncCallback callback, object state)
+        public virtual IAsyncResult BeginInvokeActionDescriptor(ControllerContext controllerContext, ActionDescriptor actionDescriptor, AsyncCallback callback, object state)
         {
             if (controllerContext == null)
             {
@@ -125,7 +125,7 @@
             return BeginInvokeAction_ActionNotFound(callback, state);
         }
 
-        public bool EndInvokeActionDescriptor(IAsyncResult asyncResult)
+        public virtual bool EndInvokeActionDescriptor(IAsyncResult asyncResult)
         {
             return AsyncResultWrapper.End<bool>(asyncResult, _invokeActionTag);
         }
@@ -149,7 +149,7 @@
             return RunContentNegotiation(controllerContext, actionDescriptor, actionReturnValue);
         }
 
-        private static ActionResult RunContentNegotiation(ControllerContext controllerContext, ActionDescriptor actionDescriptor, object actionReturnValue)
+        protected virtual ActionResult RunContentNegotiation(ControllerContext controllerContext, ActionDescriptor actionDescriptor, object actionReturnValue)
         {
             var configuration = GlobalConfiguration.Configuration;
             IContentNegotiator contentNegotiator = configuration.Services.GetContentNegotiator();

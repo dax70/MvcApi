@@ -75,6 +75,7 @@
     <Compile Include="ApiControllerActionSelector.cs" />
     <Compile Include="ApiControllerActionSelector_old.cs" />
     <Compile Include="ApiControllerDescriptor.cs" />
+    <Compile Include="IApiAsyncActionInvoker.cs" />
     <Compile Include="IRegisterDependency.cs" />
     <Compile Include="RedirectToRouteResult.cs" />
     <Compile Include="Async\AsyncDelegates.cs" />

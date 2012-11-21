@@ -4,6 +4,7 @@
     using System;
     using System.Web;
     using System.Web.Mvc;
+    using System.Web.Mvc.Async;
     #endregion
 
     public class ApiController : Controller
@@ -32,6 +33,11 @@
             return this.Configuration.Services.GetActionInvoker();
         }
 
+        protected virtual IActionSelector CreateActionSelector()
+        {
+            return this.Configuration.Services.GetActionSelector();
+        }
+
         protected override IAsyncResult BeginExecuteCore(AsyncCallback callback, object state)
         {
             this.PossiblyLoadTempData();
@@ -41,15 +47,15 @@
                 var controllerContext = this.ControllerContext;
                 ServicesContainer controllerServices = this.Configuration.Services;
 
-                ApiControllerActionInvoker asyncInvoker = this.ActionInvoker as ApiControllerActionInvoker;
-                ActionDescriptor actionDescriptor = controllerServices.GetActionSelector().SelectAction(controllerContext);
-                if (asyncInvoker != null)
+                IApiAsyncActionInvoker apiAsyncInvoker = this.ActionInvoker as IApiAsyncActionInvoker;
+                ActionDescriptor actionDescriptor = this.CreateActionSelector().SelectAction(controllerContext);
+                if (apiAsyncInvoker != null)
                 {
-                    BeginInvokeDelegate beginDelegate = (AsyncCallback asyncCallback, object asyncState) => asyncInvoker.BeginInvokeActionDescriptor(controllerContext, actionDescriptor, asyncCallback, asyncState);
+                    BeginInvokeDelegate beginDelegate = (AsyncCallback asyncCallback, object asyncState) => apiAsyncInvoker.BeginInvokeActionDescriptor(controllerContext, actionDescriptor, asyncCallback, asyncState);
 
                     EndInvokeDelegate endDelegate = delegate(IAsyncResult asyncResult)
                     {
-                        if (!asyncInvoker.EndInvokeActionDescriptor(asyncResult))
+                        if (!apiAsyncInvoker.EndInvokeActionDescriptor(asyncResult))
                         {
                             throw new HttpException(404, "Unknown action");
                         }
@@ -58,7 +64,17 @@
                 }
                 else
                 {
-                    throw new InvalidOperationException("Only ApiActionInvoker is supported at this time.");
+                    IAsyncActionInvoker asyncInvoker = this.ActionInvoker as IAsyncActionInvoker;
+                    if (asyncInvoker != null)
+                    {
+                        asyncInvoker.BeginInvokeAction(controllerContext, actionDescriptor.ActionName, callback, state);
+                    }
+                    else
+                    {
+                        this.ActionInvoker.InvokeAction(controllerContext, actionDescriptor.ActionName);
+                    }
+
+                    //throw new InvalidOperationException("Only ApiActionInvoker is supported at this time.");
                     // TODO: consider translation.
                     //Action action = delegate
                     //{
