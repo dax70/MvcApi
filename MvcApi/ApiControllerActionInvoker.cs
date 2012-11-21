@@ -165,6 +165,11 @@
             return content;
         }
 
+        protected virtual ControllerDescriptor CreateControllerDescriptor(Type controllerType)
+        {
+            return new ApiControllerDescriptor(controllerType);
+        }
+
         protected override ControllerDescriptor GetControllerDescriptor(ControllerContext controllerContext)
         {
             return GetControllerDescriptor(controllerContext.Controller.GetType());
@@ -173,10 +178,7 @@
         internal ControllerDescriptor GetControllerDescriptor(Type controllerType)
         {
             // Had to replicate DescriptorCache from Mvc source :(
-            return this.DescriptorCache.GetDescriptor(controllerType, delegate
-            {
-                return new ApiControllerDescriptor(controllerType);
-            });
+            return this.DescriptorCache.GetDescriptor(controllerType, () => CreateControllerDescriptor(controllerType));
         }
 
         #region Static Members
