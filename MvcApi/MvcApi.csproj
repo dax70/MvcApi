@@ -77,6 +77,7 @@
     <Compile Include="ApiControllerDescriptor.cs" />
     <Compile Include="IApiAsyncActionInvoker.cs" />
     <Compile Include="IRegisterDependency.cs" />
+    <Compile Include="Data\QueryOfTypeFilterAttribute.cs" />
     <Compile Include="RedirectToRouteResult.cs" />
     <Compile Include="Async\AsyncDelegates.cs" />
     <Compile Include="Async\AsyncResultWrapper.cs" />

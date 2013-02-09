@@ -13,7 +13,7 @@
     [AttributeUsage(AttributeTargets.Method, Inherited = true, AllowMultiple = false)]
     public sealed class QueryFilterAttribute : QueryableFilterAttribute
     {
-        internal static readonly string TotalCountKey = "MS_InlineCountKey";
+        internal static readonly string TotalCountKey = "MvcApi_InlineCountKey";
         private static readonly MethodInfo _getTotalCountMethod = typeof(QueryFilterAttribute).GetMethod("GetTotalCount", BindingFlags.NonPublic | BindingFlags.Instance);
 
         public QueryFilterAttribute()

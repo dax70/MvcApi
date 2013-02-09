@@ -9,12 +9,25 @@
     using MvcApi.Query;
     #endregion
 
-    public abstract class QueryableFilterProvider : IFilterProvider
+    public class QueryableFilterProvider : IFilterProvider
     {
         private QueryValidator validator;
 
         public QueryableFilterProvider()
         {
+        }
+
+        public QueryValidator Validator
+        {
+            get
+            {
+                if (validator == null)
+                {
+                    validator = GlobalConfiguration.Configuration.Services.GetQueryValidator();
+                }
+                return validator;
+            }
+            set { this.validator = value; }
         }
 
         public IEnumerable<Filter> GetFilters(ControllerContext controllerContext, ActionDescriptor actionDescriptor)
@@ -31,7 +44,11 @@
             return Enumerable.Empty<Filter>();
         }
 
-        protected abstract IEnumerable<Filter> GetQueryableFilters(ControllerContext controllerContext, ApiActionDescriptor actionDescriptor);
+        protected virtual IEnumerable<Filter> GetQueryableFilters(ControllerContext controllerContext, ApiActionDescriptor actionDescriptor)
+        {
+            yield return new Filter(new QueryFilterAttribute(this.Validator) { ResultLimit = 15, InlineCount = true }, FilterScope.Last, null);
+            yield return new Filter(new QueryOfTypeFilterAttribute(), FilterScope.Last, null);
+        }
 
         private static Type GetQueryElementTypeOrNull(Type returnType)
         {
