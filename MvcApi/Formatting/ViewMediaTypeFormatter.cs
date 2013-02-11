@@ -1,10 +1,7 @@
 ﻿namespace MvcApi.Formatting
 {
     using System;
-    using System.Net.Http.Headers;
     using System.Text;
-    using System.Web.Mvc;
-    using MvcApi.Http;
 
     public class ViewMediaTypeFormatter : MediaTypeFormatter
     {
@@ -31,6 +28,8 @@
         {
             //var view = new ViewResult { ViewName = formatterContext.ActionDescriptor.ActionName };
             var view = new SafeViewResult { ViewName = formatterContext.ActionDescriptor.ActionName };
+
+            
 
             if (returnValue != null)
             {

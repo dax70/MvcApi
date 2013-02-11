@@ -78,6 +78,7 @@
     <Compile Include="IApiAsyncActionInvoker.cs" />
     <Compile Include="IRegisterDependency.cs" />
     <Compile Include="Data\QueryOfTypeFilterAttribute.cs" />
+    <Compile Include="IViewSelector.cs" />
     <Compile Include="RedirectToRouteResult.cs" />
     <Compile Include="Async\AsyncDelegates.cs" />
     <Compile Include="Async\AsyncResultWrapper.cs" />
@@ -132,14 +133,19 @@
     <Compile Include="HttpRequestBaseExtensions.cs" />
     <Compile Include="Http\DictionaryAdapterCollection.cs" />
     <Compile Include="Http\HttpExtensions.cs" />
-    <Compile Include="Http\HttpMethod.cs" />
-    <Compile Include="Http\HttpMethodHelper.cs" />
+    <Compile Include="ViewLocations.cs" />
+    <Compile Include="ViewLocationCollection.cs" />
+    <None Include="Http\HttpMethod.cs1" />
+    <None Include="Http\HttpMethodHelper.cs1" />
     <Compile Include="Http\HttpParseResult.cs" />
     <Compile Include="Http\HttpRequestMessage.cs" />
     <Compile Include="Http\HttpResponseMessage%271.cs" />
     <Compile Include="Http\HttpResponseMessage.cs" />
     <Compile Include="Http\HttpRuleParser.cs" />
     <Compile Include="Http\HttpStatusDescription.cs" />
+    <Compile Include="ViewLocationContext.cs" />
+    <Compile Include="Views\DefaultViewSelector.cs" />
+    <Compile Include="ViewLocation.cs" />
     <None Include="..\MvcApiKey.pfx">
       <Link>MvcApiKey.pfx</Link>
     </None>
