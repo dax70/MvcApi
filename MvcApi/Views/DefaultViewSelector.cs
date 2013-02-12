@@ -35,27 +35,24 @@ namespace MvcApi.Views
             var action = context.ActionDescriptor.ActionName;
             var controller = context.ActionDescriptor.ControllerDescriptor.ControllerName;
 
+            var matches = new List<ViewLocationMatch>();
 
-            // first filter by the verb
-            var locations = this.Locations
-                                .Where(location => location.Verbs.Any(verb => verb.Equals(httpVerb, StringComparison.CurrentCultureIgnoreCase)))
-                                .Where(GetValue("action", action))
-                                .Where(GetValue("controller", controller));
+            foreach (var location in this.Locations)
+            {
+                ViewLocationMatch match;
 
-            return locations.FirstOrDefault();
+                if (location.Verbs.Any(verb => verb.Equals(httpVerb, StringComparison.CurrentCultureIgnoreCase)))
+                {
+                    match = MatchViewMapping(context, location);
+                }
+            }
+
+            return this.Locations.FirstOrDefault();
         }
 
-        private static Func<ViewLocation, bool> GetValue(string key, string value)
+        private ViewLocationMatch MatchViewMapping(ViewLocationContext locationContext, ViewLocation location)
         {
-            return location =>
-                    {
-                        object obj;
-                        if (location.ViewTokens.TryGetValue(key, out obj) && obj != null)
-                        {
-                            return value.Equals(obj.ToString(), StringComparison.CurrentCultureIgnoreCase);
-                        }
-                        return true;
-                    };
+            return null;
         }
     }
 }
