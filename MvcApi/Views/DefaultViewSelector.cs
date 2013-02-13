@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
-using System.Net.Http;
 
 namespace MvcApi.Views
 {
@@ -31,27 +31,54 @@ namespace MvcApi.Views
 
         public ViewLocation SelectLocation(ViewLocationContext context)
         {
-            var httpVerb = context.RequestContext.GetHttpMethod();
             var action = context.ActionDescriptor.ActionName;
             var controller = context.ActionDescriptor.ControllerDescriptor.ControllerName;
 
-            var matches = new List<ViewLocationMatch>();
+            var matches = ComputeViewMatches(context, this.Locations);
 
-            foreach (var location in this.Locations)
+            ViewLocation location = SelectBestLocation(matches);
+
+            return this.Locations.FirstOrDefault();
+        }
+
+        private Collection<ViewLocationMatch> ComputeViewMatches(ViewLocationContext context, IEnumerable<ViewLocation> locations)
+        {
+            var httpVerb = context.RequestContext.GetHttpMethod();
+            var matches = new Collection<ViewLocationMatch>();
+
+            foreach (var location in locations)
             {
                 ViewLocationMatch match;
 
                 if (location.Verbs.Any(verb => verb.Equals(httpVerb, StringComparison.CurrentCultureIgnoreCase)))
                 {
-                    match = MatchViewMapping(context, location);
+                    if ((match = MatchTypeViewMapping(context, location)) != null)
+                    {
+                        matches.Add(match);
+                    }
+                    else
+                    {
+
+                    }
                 }
             }
-
-            return this.Locations.FirstOrDefault();
+            return matches;
         }
 
-        private ViewLocationMatch MatchViewMapping(ViewLocationContext locationContext, ViewLocation location)
+        private ViewLocation SelectBestLocation(Collection<ViewLocationMatch> matches)
         {
+            throw new NotImplementedException();
+        }
+
+        private ViewLocationMatch MatchTypeViewMapping(ViewLocationContext context, ViewLocation location)
+        {
+            int qualityValue = 0;
+
+            //foreach (var matchValue in location.MatchValues)
+            //{
+            //    if(matchValue.Key.Equals(context.
+            //}
+
             return null;
         }
     }

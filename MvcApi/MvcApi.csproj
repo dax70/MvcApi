@@ -135,7 +135,8 @@
     <Compile Include="Http\HttpExtensions.cs" />
     <Compile Include="ViewLocations.cs" />
     <Compile Include="ViewLocationCollection.cs" />
-    <Compile Include="Views\ViewMatch.cs" />
+    <Compile Include="Views\ViewLocationMatch.cs" />
+    <Compile Include="Views\ViewMatchKind.cs" />
     <None Include="Http\HttpMethod.cs1" />
     <None Include="Http\HttpMethodHelper.cs1" />
     <Compile Include="Http\HttpParseResult.cs" />

@@ -10,6 +10,8 @@ namespace MvcApi.Views
         {
         }
 
-        public string Location { get; set; }
+        public int MatchValues { get; set; }
+
+        public ViewLocation Location { get; set; }
     }
 }

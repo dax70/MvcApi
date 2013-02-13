@@ -14,6 +14,8 @@ namespace MvcApi
 
         public IEnumerable<string> Verbs { get; set; }
 
-        public RouteValueDictionary ViewTokens { get; set; }
+        public RouteValueDictionary MatchValues { get; set; }
+
+        public string View { get; set; }
     }
 }
