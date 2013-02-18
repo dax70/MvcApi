@@ -5,10 +5,14 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Diagnostics.Contracts;
 using System.Linq;
+using System.Net;
+using System.Web;
 using System.Web.Http.OData.Query;
 using System.Web.Mvc;
 using MvcApi.Http;
-using MvcApi.OData.Query; 
+using MvcApi.OData.Query;
+using System.Web.Http.OData;
+using Microsoft.Data.Edm;
 #endregion
 
 namespace MvcApi.OData
@@ -72,53 +76,53 @@ namespace MvcApi.OData
             }
         }
 
-        ///// <summary>
-        ///// Gets or sets the maximum depth of the Any or All elements nested inside the query.
-        ///// </summary>
-        ///// <remarks>
-        ///// This limit helps prevent Denial of Service attacks. The default value is 1.
-        ///// </remarks>
-        ///// <value>
-        ///// The maxiumum depth of the Any or All elements nested inside the query.
-        ///// </value>
-        //public int MaxAnyAllExpressionDepth
-        //{
-        //    get
-        //    {
-        //        return _maxAnyAllExpressionDepth;
-        //    }
-        //    set
-        //    {
-        //        if (value < MinAnyAllExpressionDepth)
-        //        {
-        //            throw Error.ArgumentMustBeGreaterThanOrEqualTo("value", value, MinAnyAllExpressionDepth);
-        //        }
+        /// <summary>
+        /// Gets or sets the maximum depth of the Any or All elements nested inside the query.
+        /// </summary>
+        /// <remarks>
+        /// This limit helps prevent Denial of Service attacks. The default value is 1.
+        /// </remarks>
+        /// <value>
+        /// The maxiumum depth of the Any or All elements nested inside the query.
+        /// </value>
+        public int MaxAnyAllExpressionDepth
+        {
+            get
+            {
+                return _maxAnyAllExpressionDepth;
+            }
+            set
+            {
+                if (value < MinAnyAllExpressionDepth)
+                {
+                    throw Error.ArgumentMustBeGreaterThanOrEqualTo("value", value, MinAnyAllExpressionDepth);
+                }
 
-        //        _maxAnyAllExpressionDepth = value;
-        //    }
-        //}
+                _maxAnyAllExpressionDepth = value;
+            }
+        }
 
-        ///// <summary>
-        ///// Gets or sets the maximum number of query results to send back to clients.
-        ///// </summary>
-        ///// <value>
-        ///// The maximum number of query results to send back to clients.
-        ///// </value>
-        //public int PageSize
-        //{
-        //    get
-        //    {
-        //        return _pageSize ?? default(int);
-        //    }
-        //    set
-        //    {
-        //        if (value <= 0)
-        //        {
-        //            throw Error.ArgumentMustBeGreaterThanOrEqualTo("value", value, 1);
-        //        }
-        //        _pageSize = value;
-        //    }
-        //}
+        /// <summary>
+        /// Gets or sets the maximum number of query results to send back to clients.
+        /// </summary>
+        /// <value>
+        /// The maximum number of query results to send back to clients.
+        /// </value>
+        public int PageSize
+        {
+            get
+            {
+                return _pageSize ?? default(int);
+            }
+            set
+            {
+                if (value <= 0)
+                {
+                    throw Error.ArgumentMustBeGreaterThanOrEqualTo("value", value, 1);
+                }
+                _pageSize = value;
+            }
+        }
 
         public AllowedQueryOptions AllowedQueryOptions
         {
@@ -209,24 +213,24 @@ namespace MvcApi.OData
             }
         }
 
-        //public int MaxTop
-        //{
-        //    get
-        //    {
-        //        return _validationSettings.MaxTop ?? default(int);
-        //    }
-        //    set
-        //    {
-        //        if (value < MinMaxTop)
-        //        {
-        //            throw Error.ArgumentMustBeGreaterThanOrEqualTo("value", value, MinMaxTop);
-        //        }
+        public int MaxTop
+        {
+            get
+            {
+                return _validationSettings.MaxTop ?? default(int);
+            }
+            set
+            {
+                if (value < MinMaxTop)
+                {
+                    throw Error.ArgumentMustBeGreaterThanOrEqualTo("value", value, MinMaxTop);
+                }
 
-        //        _validationSettings.MaxTop = value;
-        //    }
-        //}
+                _validationSettings.MaxTop = value;
+            }
+        }
 
-#endregion 
+        #endregion
 
         public override void OnActionExecuted(ActionExecutedContext filterContext)
         {
@@ -295,23 +299,6 @@ namespace MvcApi.OData
         //    return queryOptions.ApplyTo(queryable, querySettings);
         //}
 
-        //internal static ODataQueryContext CreateQueryContext(Type elementClrType, HttpConfiguration configuration, HttpActionDescriptor actionDescriptor)
-        //{
-        //    // Get model for the entire app
-        //    IEdmModel model = configuration.GetEdmModel();
-
-        //    if (model == null || model.GetEdmType(elementClrType) == null)
-        //    {
-        //        // user has not configured anything or has registered a model without the element type
-        //        // let's create one just for this type and cache it in the action descriptor
-        //        model = actionDescriptor.GetEdmModel(elementClrType);
-        //        Contract.Assert(model != null);
-        //    }
-
-        //    // parses the query from request uri
-        //    return new ODataQueryContext(model, elementClrType);
-        //}
-
         /// <summary>
         /// Validates that the OData query of the incoming request is supported.
         /// </summary>
@@ -338,13 +325,38 @@ namespace MvcApi.OData
             {
                 if (!ODataQueryOptions.IsSupported(key) && key.StartsWith("$", StringComparison.Ordinal))
                 {
-                //        // we don't support any custom query options that start with $
-                //        throw new HttpException(request.CreateErrorResponse(HttpStatusCode.BadRequest,
-                //            Error.Format(SRResources.QueryParameterNotSupported, kvp.Key)));
+                    // we don't support any custom query options that start with $
+                    throw new HttpException((int)HttpStatusCode.BadRequest, Error.Format("The query parameter '{0}' is not supported.", key));
                 }
             }
 
             queryOptions.Validate(_validationSettings);
+        }
+
+        /// <summary>
+        /// Gets the EDM model for the given type and request.
+        /// </summary>
+        /// <param name="elementClrType">The CLR type to retrieve a model for.</param>
+        /// <param name="request">The request message to retrieve a model for.</param>
+        /// <param name="actionDescriptor">The action descriptor for the action being queried on.</param>
+        /// <returns>The EDM model for the given type and request.</returns>
+        /// <remarks>
+        /// Override this method to customize the EDM model used for querying.
+        /// </remarks>
+        public virtual IEdmModel GetModel(Type elementClrType, HttpRequestMessage request, ApiActionDescriptor actionDescriptor)
+        {
+            // Get model for the request
+            IEdmModel model = request.GetEdmModel();
+
+            if (model == null || model.GetEdmType(elementClrType) == null)
+            {
+                // user has not configured anything or has registered a model without the element type
+                // let's create one just for this type and cache it in the action descriptor
+                model = actionDescriptor.GetEdmModel(elementClrType);
+            }
+
+            Contract.Assert(model != null);
+            return model;
         }
     }
 }

@@ -124,6 +124,24 @@ namespace MvcApi.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Value must be greater than or equal to {0}..
+        /// </summary>
+        internal static string ArgumentMustBeGreaterThanOrEqualTo {
+            get {
+                return ResourceManager.GetString("ArgumentMustBeGreaterThanOrEqualTo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Value must be less than or equal to {0}..
+        /// </summary>
+        internal static string ArgumentMustBeLessThanOrEqualTo {
+            get {
+                return ResourceManager.GetString("ArgumentMustBeLessThanOrEqualTo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The provided IAsyncResult has already been consumed..
         /// </summary>
         internal static string AsyncCommon_AsyncResultAlreadyConsumed {

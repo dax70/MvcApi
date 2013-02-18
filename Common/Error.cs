@@ -23,6 +23,11 @@
             return new ArgumentOutOfRangeException(parameterName, actualValue, Format(messageFormat, messageArgs));
         }
 
+        public static ArgumentOutOfRangeException ArgumentMustBeGreaterThanOrEqualTo(string parameterName, object actualValue, object minValue)
+        {
+            return new ArgumentOutOfRangeException(parameterName, actualValue, Format(SRResources.ArgumentMustBeGreaterThanOrEqualTo, new object[] { minValue }));
+        }
+
         public static ArgumentNullException ArgumentNull(string parameterName)
         {
             return new ArgumentNullException(parameterName);

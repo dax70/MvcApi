@@ -2,6 +2,7 @@
 {
     #region Using Directives
     using System;
+    using System.Collections.Concurrent;
     using System.Collections.Generic;
     using System.Reflection;
     using System.Web.Mvc;
@@ -9,6 +10,8 @@
 
     public class ApiActionDescriptor : ReflectedActionDescriptor
     {
+        private readonly Lazy<ConcurrentDictionary<object, object>> _properties = new Lazy<ConcurrentDictionary<object, object>>();
+
         public ApiActionDescriptor(MethodInfo methodInfo, string actionName, ControllerDescriptor controllerDescriptor)
             : base(methodInfo, actionName, controllerDescriptor)
         {
@@ -25,6 +28,11 @@
                 }
                 return null;
             }
+        }
+
+        public virtual ConcurrentDictionary<object, object> Properties
+        {
+            get { return this._properties.Value; }
         }
 
         public ICollection<ActionMethodSelectorAttribute> GetActionMethodSelectorAttributes()

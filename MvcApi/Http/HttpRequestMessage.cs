@@ -16,6 +16,7 @@
         private Dictionary<string, IEnumerable<string>> headers;
         private List<MediaTypeWithQualityHeaderValue> acceptHeaders;
         private List<MediaTypeWithQualityHeaderValue> acceptCharset;
+        private IDictionary<string, object> properties;
         private bool contentTypeParsed = false;
 
         #region Constructors
@@ -101,7 +102,17 @@
 
         public Uri RequestUri { get; set; }
 
-        internal HttpContextBase HttpContext { get; set; }
+        public IDictionary<string, object> Properties
+        {
+            get
+            {
+                if (this.properties == null)
+                {
+                    this.properties = new Dictionary<string, object>();
+                }
+                return this.properties;
+            }
+        }
 
         public NameValueCollection QueryString
         {
@@ -109,6 +120,8 @@
         }
 
         #endregion
+
+        internal HttpContextBase HttpContext { get; set; }
 
         private void InitializeValues(string method, Uri requestUri)
         {

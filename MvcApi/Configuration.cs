@@ -2,10 +2,11 @@
 {
     #region Using Directives
     using System;
+    using System.Collections.Concurrent;
     using System.Collections.Generic;
     using System.Web.Mvc;
     using MvcApi.Formatting;
-    using MvcApi.Services; 
+    using MvcApi.Services;
     #endregion
 
     public class Configuration : IDisposable
@@ -13,11 +14,17 @@
         private IDependencyResolver _dependencyResolver = Configuration.DefaultResolver();
         private readonly MediaTypeFormatterCollection _formatters = Configuration.DefaultFormatters();
         private List<IDisposable> _resourcesToDispose = new List<IDisposable>();
+        private readonly ConcurrentDictionary<object, object> _properties = new ConcurrentDictionary<object, object>();
         private bool _disposed;
 
         public Configuration()
         {
             Services = new DefaultServices(this);
+        }
+
+        public ConcurrentDictionary<object, object> Properties
+        {
+            get { return this._properties; }
         }
 
         public IDependencyResolver DependencyResolver
