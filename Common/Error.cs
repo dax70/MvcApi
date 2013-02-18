@@ -8,6 +8,7 @@
     using System.Globalization;
     using System.Reflection;
     using MvcApi.Properties;
+    using System.ComponentModel;
     #endregion
 
     internal static class Error
@@ -40,6 +41,11 @@
         public static InvalidOperationException InvalidOperation(string messageFormat, params object[] messageArgs)
         {
             return new InvalidOperationException(Format(messageFormat, messageArgs));
+        }
+
+        public static ArgumentException InvalidEnumArgument(string parameterName, int invalidValue, Type enumClass)
+        {
+            return new InvalidEnumArgumentException(parameterName, invalidValue, enumClass);
         }
 
         [SuppressMessage("Microsoft.Naming", "CA1719:ParameterNamesShouldNotMatchMemberNames", MessageId = "0#", Justification = "Standard String.Format pattern and names.")]

@@ -65,6 +65,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\Common\Error.cs">
+      <Link>Error.cs</Link>
+    </Compile>
+    <Compile Include="..\Common\SRResources.Designer.cs">
+      <Link>Properties\SRResources.Designer.cs</Link>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SRResources.resx</DependentUpon>
+    </Compile>
     <Compile Include="ActionMethodSelector.cs" />
     <Compile Include="ActionResultExtensions.cs" />
     <Compile Include="ActionType.cs" />
@@ -98,7 +107,6 @@
     <Compile Include="Data\QueryFilterAttribute.cs" />
     <Compile Include="Data\QueryResult.cs" />
     <Compile Include="DictionaryExtensions.cs" />
-    <Compile Include="Error.cs" />
     <Compile Include="Formatting\ContentNegotiationResult.cs" />
     <Compile Include="Formatting\DefaultContentNegotiator.cs" />
     <Compile Include="Formatting\EnumerableTypes.cs" />
@@ -194,11 +202,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SR.resx</DependentUpon>
     </Compile>
-    <Compile Include="Properties\SRResources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SRResources.resx</DependentUpon>
-    </Compile>
     <Compile Include="SafeViewResult.cs" />
     <Compile Include="ServicesExtensions.cs" />
     <Compile Include="Services\DefaultServices.cs" />
@@ -206,14 +209,14 @@
     <Compile Include="TypeHelper.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="..\Common\SRResources.resx">
+      <Link>Properties\SRResources.resx</Link>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>SRResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\SR.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>SR.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Properties\SRResources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>SRResources.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
