@@ -26,10 +26,13 @@
 
         public override void ExecuteFormat(Type type, object returnValue, FormatterContext formatterContext)
         {
-            //var view = new ViewResult { ViewName = formatterContext.ActionDescriptor.ActionName };
-            var view = new SafeViewResult { ViewName = formatterContext.ActionDescriptor.ActionName };
+            IViewSelector viewSelector = GlobalConfiguration.Configuration.Services.GetViewSelector();
 
-            
+            var view = viewSelector.SelectView(new ViewLocationContext(formatterContext) 
+            { 
+                ActionDescriptor = formatterContext.ActionDescriptor,
+                ReturnType = type
+            });
 
             if (returnValue != null)
             {

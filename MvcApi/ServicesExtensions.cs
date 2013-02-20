@@ -56,6 +56,11 @@ namespace MvcApi
             return services.GetService<IStructuredQueryBuilder>();
         }
 
+        public static IViewSelector GetViewSelector(this ServicesContainer services)
+        {
+            return services.GetServiceOrThrow<IViewSelector>();
+        }
+
         // Runtime code shouldn't call GetService() directly. Instead, have a wrapper (like the ones above) and call through the wrapper.
         private static TService GetService<TService>(this ServicesContainer services)
         {

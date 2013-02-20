@@ -143,6 +143,8 @@
     <Compile Include="Http\HttpExtensions.cs" />
     <Compile Include="ViewLocations.cs" />
     <Compile Include="ViewLocationCollection.cs" />
+    <Compile Include="Views\ViewCollectionExtensions.cs" />
+    <Compile Include="Views\ViewConfigurationExtensions.cs" />
     <Compile Include="Views\ViewLocationMatch.cs" />
     <Compile Include="Views\ViewMatchKind.cs" />
     <None Include="Http\HttpMethod.cs1" />
@@ -202,7 +204,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SR.resx</DependentUpon>
     </Compile>
-    <Compile Include="SafeViewResult.cs" />
+    <Compile Include="ApiViewResult.cs" />
     <Compile Include="ServicesExtensions.cs" />
     <Compile Include="Services\DefaultServices.cs" />
     <Compile Include="Services\ServicesContainer.cs" />

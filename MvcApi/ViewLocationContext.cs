@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Web.Mvc;
-using System.Net.Http;
 
 namespace MvcApi
 {
@@ -13,7 +12,7 @@ namespace MvcApi
 
         public ActionDescriptor ActionDescriptor { get; set; }
 
-        public Type ObjectType { get; set; }
+        public Type ReturnType { get; set; }
 
         public object ReturnValue { get; set; }
     }

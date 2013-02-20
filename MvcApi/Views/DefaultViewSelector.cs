@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Web.Mvc;
 
 namespace MvcApi.Views
 {
@@ -29,7 +30,7 @@ namespace MvcApi.Views
             }
         }
 
-        public ViewLocation SelectLocation(ViewLocationContext context)
+        public ViewResult SelectView(ViewLocationContext context)
         {
             var action = context.ActionDescriptor.ActionName;
             var controller = context.ActionDescriptor.ControllerDescriptor.ControllerName;
@@ -37,49 +38,56 @@ namespace MvcApi.Views
             var matches = ComputeViewMatches(context, this.Locations);
 
             ViewLocation location = SelectBestLocation(matches);
-
-            return this.Locations.FirstOrDefault();
+            return new ViewResult { ViewName = location.ViewName };
         }
 
         private Collection<ViewLocationMatch> ComputeViewMatches(ViewLocationContext context, IEnumerable<ViewLocation> locations)
         {
-            var httpVerb = context.RequestContext.GetHttpMethod();
             var matches = new Collection<ViewLocationMatch>();
 
             foreach (var location in locations)
             {
-                ViewLocationMatch match;
-
-                if (location.Verbs.Any(verb => verb.Equals(httpVerb, StringComparison.CurrentCultureIgnoreCase)))
+                if (!MatchsVerbMapping(context, location) && !MatchesActionName(context, location))
                 {
-                    if ((match = MatchTypeViewMapping(context, location)) != null)
-                    {
-                        matches.Add(match);
-                    }
-                    else
-                    {
-
-                    }
+                    continue;
                 }
+
+                var match = new ViewLocationMatch { Location = location };
+
+                if (location.Type is IQueryable)
+                {
+                    match.Incrememt();
+                }
+
+                if(context.ReturnType.Equals(location.Type))
+                {
+                    match.Incrememt();
+                }
+
+                matches.Add(match);
             }
             return matches;
         }
 
         private ViewLocation SelectBestLocation(Collection<ViewLocationMatch> matches)
         {
-            throw new NotImplementedException();
+            var match = matches.OrderByDescending(m => m.PointsOfMatch).FirstOrDefault();
+
+            return match != null ? match.Location : null;
         }
 
-        private ViewLocationMatch MatchTypeViewMapping(ViewLocationContext context, ViewLocation location)
+        // Filter out if the verb doesnt match.
+        private bool MatchsVerbMapping(ViewLocationContext context, ViewLocation location)
         {
-            int qualityValue = 0;
+            var httpVerb = context.RequestContext.GetHttpMethod();
+            var verbs = location.Verbs;
 
-            //foreach (var matchValue in location.MatchValues)
-            //{
-            //    if(matchValue.Key.Equals(context.
-            //}
+            return verbs != null && !verbs.Any(verb => verb.Equals(httpVerb, StringComparison.OrdinalIgnoreCase));
+        }
 
-            return null;
+        private bool MatchesActionName(ViewLocationContext context, ViewLocation location)
+        {
+            return context.ActionDescriptor.ActionName.Equals(location.ActionName, StringComparison.OrdinalIgnoreCase);
         }
     }
 }

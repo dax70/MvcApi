@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
-using System.Web.Routing;
 
 namespace MvcApi
 {
@@ -12,10 +11,12 @@ namespace MvcApi
         {
         }
 
+        public string ActionName { get; set; }
+
         public IEnumerable<string> Verbs { get; set; }
 
-        public RouteValueDictionary MatchValues { get; set; }
+        public Type Type { get; set; }
 
-        public string View { get; set; }
+        public string ViewName { get; set; }
     }
 }

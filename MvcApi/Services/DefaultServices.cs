@@ -10,6 +10,7 @@ using System.Web.Mvc;
 using MvcApi.Formatting;
 using MvcApi.Properties;
 using MvcApi.Query;
+using MvcApi.Views;
 
 namespace MvcApi.Services
 {
@@ -26,8 +27,8 @@ namespace MvcApi.Services
     ///         <item><see cref="IAssembliesResolver"/></item>
     ///         <item><see cref="IContentNegotiator"/></item>
     ///         <item><see cref="IFilterProvider"/></item>
-    ///         <item><see cref="IHttpActionInvoker"/></item>
-    ///         <item><see cref="IHttpActionSelector"/></item>
+    ///         <item><see cref="IpActionInvoker"/></item>
+    ///         <item><see cref="IpActionSelector"/></item>
     ///     </list>
     ///     <para>
     ///         Passing any type which is not on this to any method on this interface will cause
@@ -75,6 +76,8 @@ namespace MvcApi.Services
             //SetSingle<IApiExplorer>(new ApiExplorer(configuration));
             //SetSingle<IAssembliesResolver>(new DefaultAssembliesResolver());
             SetSingle<IContentNegotiator>(new DefaultContentNegotiator());
+            SetSingle<IViewSelector>(new DefaultViewSelector());
+
             //SetSingle<IDocumentationProvider>(null); // Missing
 
             //SetMultiple<IFilterProvider>(new ConfigurationFilterProvider(),

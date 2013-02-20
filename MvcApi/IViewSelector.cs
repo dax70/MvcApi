@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.Web.Mvc;
 
 namespace MvcApi
 {
     public interface IViewSelector
     {
-        ViewLocation SelectLocation(ViewLocationContext context);
+        ViewResult SelectView(ViewLocationContext context);
     }
 }

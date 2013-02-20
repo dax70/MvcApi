@@ -9,7 +9,7 @@ namespace MvcApi
     /// <summary>
     /// Augments the RedirectToRouteResult behavior by sending Created HTTP status code in responses to POST, OK HTTP status code otherwise
     /// </summary>
-    class ResourceRedirectToRouteResult : ActionResult
+    internal class ResourceRedirectToRouteResult : ActionResult
     {
         RedirectToRouteResult inner;
 

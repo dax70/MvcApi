@@ -16,6 +16,8 @@
             Patch = "PATCH";
 
             AllowedVerbs = new string[] { Get, Post, Put, Delete };
+
+            AllVerbs = new string[] { Get, Post, Put, Delete, Delete, Head, Options, Trace, Patch };
         }
 
         public static readonly string Delete;
@@ -28,5 +30,8 @@
         public static readonly string Patch;
 
         public static readonly string[] AllowedVerbs;
+
+        public static readonly string[] AllVerbs;
+
     }
 }

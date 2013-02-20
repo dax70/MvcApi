@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace MvcApi.Views
 {
@@ -10,8 +8,13 @@ namespace MvcApi.Views
         {
         }
 
-        public int MatchValues { get; set; }
-
         public ViewLocation Location { get; set; }
+
+        public int PointsOfMatch { get; set; }
+
+        internal void Incrememt()
+        {
+            ++this.PointsOfMatch;
+        }
     }
 }
