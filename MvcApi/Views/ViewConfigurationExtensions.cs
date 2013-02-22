@@ -7,7 +7,7 @@ namespace MvcApi.Views
     {
         public static void EnableDefaultViews(this Configuration configuration, ViewLocationCollection locations)
         {
-            locations.MapLocation("get", "index", type: typeof(IQueryable));
+            locations.MapLocation("get", "index", isCollection: true);
             locations.MapLocation("get", "details"); // Rails: show
         }
     }

@@ -13,6 +13,8 @@ namespace MvcApi
 
         public string ActionName { get; set; }
 
+        public bool IsCollection { get; set; }
+
         public IEnumerable<string> Verbs { get; set; }
 
         public Type Type { get; set; }

@@ -50,11 +50,11 @@
 
         internal static Type GetUnderlyingContentInnerType(Type type)
         {
-            Type type2 = GetTaskInnerTypeOrNull(type) ?? type;
+            Type type2 = GetInnerTypeOrNull(type) ?? type;
             return (GetHttpResponseOrContentInnerTypeOrNull(type2) ?? type2);
         }
 
-        internal static Type GetTaskInnerTypeOrNull(Type type)
+        internal static Type GetInnerTypeOrNull(Type type)
         {
             if (type.IsGenericType && !type.IsGenericTypeDefinition)
             {

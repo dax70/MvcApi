@@ -204,7 +204,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SR.resx</DependentUpon>
     </Compile>
-    <Compile Include="ApiViewResult.cs" />
     <Compile Include="ServicesExtensions.cs" />
     <Compile Include="Services\DefaultServices.cs" />
     <Compile Include="Services\ServicesContainer.cs" />

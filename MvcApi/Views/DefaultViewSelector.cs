@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MvcApi.Query;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -54,12 +55,23 @@ namespace MvcApi.Views
 
                 var match = new ViewLocationMatch { Location = location };
 
-                if (location.Type is IQueryable)
+                var actionDescriptor = context.ActionDescriptor as ApiActionDescriptor;
+
+                // Try to use ApiActionDescriptor as the Filters could have enriched/modified the original at this point.
+                Type returnType = actionDescriptor != null ? actionDescriptor.ReturnType : context.ReturnType;
+
+                if (location.IsCollection)
                 {
-                    match.Incrememt();
+                    var innerType = QueryTypeHelper.GetQueryableInterfaceInnerTypeOrNull(returnType);
+
+                    if (innerType != null)
+                    {
+                        returnType = innerType;
+                        match.Incrememt();
+                    }
                 }
 
-                if(context.ReturnType.Equals(location.Type))
+                if (returnType.Equals(location.Type))
                 {
                     match.Incrememt();
                 }
