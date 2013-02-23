@@ -8,7 +8,7 @@ namespace MvcApi.Views
         public static void EnableDefaultViews(this Configuration configuration, ViewLocationCollection locations)
         {
             locations.MapLocation("get", "index", isCollection: true);
-            locations.MapLocation("get", "details"); // Rails: show
+            locations.MapLocation("get", "details", new { id = "" }); // Rails: show
         }
     }
 }

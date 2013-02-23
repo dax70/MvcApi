@@ -1,7 +1,8 @@
-﻿using System;
+﻿#region Using Directives
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web.Mvc;
+using System.Web.Routing; 
+#endregion
 
 namespace MvcApi
 {
@@ -16,6 +17,8 @@ namespace MvcApi
         public bool IsCollection { get; set; }
 
         public IEnumerable<string> Verbs { get; set; }
+
+        public RouteValueDictionary ActionParameters { get; set; }
 
         public Type Type { get; set; }
 

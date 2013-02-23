@@ -71,6 +71,19 @@ namespace MvcApi.Views
                     }
                 }
 
+                var parameters = actionDescriptor.GetParameters();
+
+                if(parameters!= null)
+                {
+                    foreach (var parameter in location.ActionParameters)
+                    {
+                        if(parameters.Any(p => p.ParameterName.Equals(parameter.Key)))
+                        {
+                            match.Incrememt();
+                        }
+                    }
+                }
+
                 if (returnType.Equals(location.Type))
                 {
                     match.Incrememt();
