@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Routing;
 
-namespace MvcApi.Views
+namespace MvcApi
 {
     public static class ViewCollectionExtensions
     {

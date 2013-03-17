@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 
-namespace MvcApi.Views
+namespace MvcApi
 {
     public static class ViewConfigurationExtensions
     {

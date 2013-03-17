@@ -1,0 +1,15 @@
+﻿@model IQueryable<MvcApi.Movies.Models.User>
+
+@{
+    ViewBag.Title = "Users List";
+}
+
+<h2>Users</h2>
+
+<ul>
+@foreach (var user in Model)
+{
+    <li>@user.Name</li>
+}
+
+</ul>

@@ -39,6 +39,12 @@ namespace MvcApi.Views
             var matches = ComputeViewMatches(context, this.Locations);
 
             ViewLocation location = SelectBestLocation(matches);
+            if (location == null)
+            {
+                throw new InvalidOperationException(
+                    string.Format("Could not find view location for action '{0}' on controller '{1}'. Make sure you have views for the specified action.", context.ActionDescriptor.ActionName, controller));
+            }
+
             return new ViewResult { ViewName = location.ViewName };
         }
 
@@ -73,11 +79,11 @@ namespace MvcApi.Views
 
                 var parameters = actionDescriptor.GetParameters();
 
-                if(parameters!= null)
+                if (parameters != null)
                 {
                     foreach (var parameter in location.ActionParameters)
                     {
-                        if(parameters.Any(p => p.ParameterName.Equals(parameter.Key)))
+                        if (parameters.Any(p => p.ParameterName.Equals(parameter.Key)))
                         {
                             match.Incrememt();
                         }
