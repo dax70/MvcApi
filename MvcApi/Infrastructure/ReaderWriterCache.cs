@@ -25,10 +25,7 @@
 
         protected Dictionary<TKey, TValue> Cache
         {
-            get
-            {
-                return _cache;
-            }
+            get { return _cache; }
         }
 
         protected TValue FetchOrCreateItem(TKey key, Func<TValue> creator)
@@ -50,7 +47,7 @@
 
             // insert the new item into the cache
             TValue newEntry = creator();
-            _rwLock.EnterReadLock();
+            _rwLock.EnterWriteLock();
             try
             {
                 TValue existingEntry;
@@ -65,7 +62,7 @@
             }
             finally
             {
-                _rwLock.ExitReadLock();
+                _rwLock.ExitWriteLock();
             }
         }
 

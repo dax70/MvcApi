@@ -46,7 +46,7 @@
 
         protected virtual IEnumerable<Filter> GetQueryableFilters(ControllerContext controllerContext, ApiActionDescriptor actionDescriptor)
         {
-            yield return new Filter(new QueryFilterAttribute(this.Validator) { ResultLimit = 15, InlineCount = true }, FilterScope.Last, null);
+            yield return new Filter(new QueryFilterAttribute(this.Validator) { ResultLimit = 10, InlineCount = true }, FilterScope.Last, null);
             yield return new Filter(new QueryOfTypeFilterAttribute(), FilterScope.Last, null);
         }
 

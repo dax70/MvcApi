@@ -1,20 +1,24 @@
 <?xml version="1.0"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
-    <id>$id$</id>
-    <version>$version$</version>
-    <title>$title$</title>
-    <authors>$author$</authors>
-    <owners>$author$</owners>
+    <id>MvcApi</id>
+    <version>1.4.1.1</version>
+    <title>MvcApi</title>
+    <authors>Eddy Recio</authors>
+    <owners>Eddy Recio</owners>
     <licenseUrl>https://github.com/dax70/MvcApi/blob/master/LICENSE.md</licenseUrl>
     <projectUrl>https://github.com/dax70/MvcApi/</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>MVC API is a Web Api framework built on top ASP.NET MVC.</description>
     <releaseNotes />
     <copyright>Copyright 2012</copyright>
+    <language />
     <tags>ASP.NET MVC Web API</tags>
     <dependencies>
       <dependency id="Newtonsoft.Json" version="4.5.7" />
     </dependencies>
+    <references>
+      <reference file="MvcApi.dll" />
+    </references>
   </metadata>
 </package>
