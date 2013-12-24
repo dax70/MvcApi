@@ -42,6 +42,7 @@
         {
             this.PossiblyLoadTempData();
             IAsyncResult result = null;
+
             try
             {
                 var controllerContext = this.ControllerContext;

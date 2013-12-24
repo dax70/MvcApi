@@ -47,10 +47,12 @@
             {
                 throw new ArgumentNullException("controllerContext");
             }
+            
             if (actionDescriptor == null)
             {
                 throw new ArgumentException("actionDescriptor");
             }
+
             if (actionDescriptor != null)
             {
                 FilterInfo filterInfo = this.GetFilters(controllerContext, actionDescriptor);
@@ -67,15 +69,19 @@
                                 //Internal: recreate -> ControllerActionInvoker.ValidateRequest(controllerContext);
                                 ValidateRequest(controllerContext);
                             }
+
                             IDictionary<string, object> parameterValues = this.GetParameterValues(controllerContext, actionDescriptor);
                             IAsyncResult asyncResult = this.BeginInvokeActionMethodWithFilters(controllerContext, filterInfo.ActionFilters, actionDescriptor, parameterValues, asyncCallback, asyncState);
+                            
                             continuation = delegate
                             {
                                 ActionExecutedContext actionExecutedContext = this.EndInvokeActionMethodWithFilters(asyncResult);
                                 this.InvokeActionResultWithFilters(controllerContext, filterInfo.ResultFilters, actionExecutedContext.Result);
                             };
+
                             return asyncResult;
                         }
+
                         continuation = delegate
                         {
                             this.InvokeActionResult(controllerContext, authContext.Result);
@@ -92,13 +98,16 @@
                         {
                             throw;
                         }
+
                         continuation = delegate
                         {
                             this.InvokeActionResult(controllerContext, exceptionContext.Result);
                         };
                     }
+                
                     return BeginInvokeAction_MakeSynchronousAsyncResult(asyncCallback, asyncState);
                 };
+
                 EndInvokeDelegate<bool> endDelegate = delegate(IAsyncResult asyncResult)
                 {
                     try
@@ -118,10 +127,13 @@
                         }
                         this.InvokeActionResult(controllerContext, exceptionContext.Result);
                     }
+
                     return true;
                 };
+
                 return AsyncResultWrapper.Begin<bool>(callback, state, beginDelegate, endDelegate, _invokeActionTag);
             }
+
             return BeginInvokeAction_ActionNotFound(callback, state);
         }
 
@@ -137,15 +149,18 @@
             {
                 return new EmptyResult();
             }
+
             ActionResult actionResult = actionReturnValue as ActionResult;
             if (actionResult != null)
             {
                 return actionResult;
             }
+
             if (actionReturnValue is string)
             {
                 return new ContentResult { Content = Convert.ToString(actionReturnValue, CultureInfo.InvariantCulture) };
             }
+
             return RunContentNegotiation(controllerContext, actionDescriptor, actionReturnValue);
         }
 
@@ -160,6 +175,7 @@
             {
                 return new HttpStatusCodeResult(HttpStatusCode.NotAcceptable);
             }
+
             ObjectContent content = new ObjectContent(actionReturnValue, result.Formatter, result.MediaType);
             content.FormatterContext = new FormatterContext(controllerContext, actionDescriptor);
             return content;
