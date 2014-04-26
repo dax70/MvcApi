@@ -45,8 +45,8 @@ namespace MvcApi.Schema
 
             //}) as SchemaCollection;
 
-            Request.RequestContext.HttpContext.Response.StatusCode = 200; //HtttpStatusCode.Ok
-            //return Request.CreateResponse<PostmanCollection>(HttpStatusCode.OK, collection, "application/json");
+            Response.StatusCode = 200; //HtttpStatusCode.Ok
+            Response.ContentType = "application/json";
             return postManCollection;
         }
     }
