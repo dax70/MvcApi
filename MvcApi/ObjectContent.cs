@@ -89,6 +89,7 @@
         {
             var response = context.HttpContext.Response;
             var media = this.MediaType;
+            // Set media type on the response object, useful if client specified several formats.
             response.ContentType = media != null && !string.IsNullOrEmpty(media.ToString()) ? media.ToString() : this.Formatter.ContentType;
             this.Formatter.ExecuteFormat(this.ObjectType, this.Value, this.FormatterContext);
         }

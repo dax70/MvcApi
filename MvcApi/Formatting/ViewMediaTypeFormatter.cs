@@ -38,6 +38,7 @@
             {
                 view.ViewData.Model = returnValue;
             }
+
             view.ExecuteResult(formatterContext);
         }
     }

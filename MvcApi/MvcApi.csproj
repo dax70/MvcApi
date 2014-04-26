@@ -169,6 +169,9 @@
     <Compile Include="HttpRequestBaseExtensions.cs" />
     <Compile Include="Http\DictionaryAdapterCollection.cs" />
     <Compile Include="Http\HttpExtensions.cs" />
+    <Compile Include="Schema\SchemaCollection.cs" />
+    <Compile Include="Schema\SchemaController.cs" />
+    <Compile Include="Schema\SchemaRequest.cs" />
     <Compile Include="ViewLocations.cs" />
     <Compile Include="ViewLocationCollection.cs" />
     <Compile Include="Views\ViewCollectionExtensions.cs" />
